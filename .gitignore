@@ -154,3 +154,5 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
+/Wykop.ApiProvider/Class1.cs
+/Wykop/Wykop.Shared/Common/WykopApiConfig.cs

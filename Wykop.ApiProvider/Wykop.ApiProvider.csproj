@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FDFD4022-30CD-4447-9A72-04B0DC847A94}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Wykop.ApiProvider</RootNamespace>
+    <AssemblyName>Wykop.ApiProvider</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile32</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <TargetPlatform Include="WindowsPhoneApp, Version=8.1" />
+    <TargetPlatform Include="Windows, Version=8.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\Attributes\WykopApiExceptionFactoryAttribute.cs" />
+    <Compile Include="Common\Constants\ApiConstants.cs" />
+    <Compile Include="Common\Aspects\CheckApiConfigurationAspect.cs" />
+    <Compile Include="Common\Aspects\RetryOnNetworkExceptionAspect.cs" />
+    <Compile Include="Common\Extensions\RestRequestExtensions.cs" />
+    <Compile Include="Common\WykopApiConfiguration.cs" />
+    <Compile Include="Common\Constants\DataConstants.cs" />
+    <Compile Include="Data\IApiDataContainer.cs" />
+    <Compile Include="Data\Link\Favorites\LoggedUserFavoritesLinksRequest.cs" />
+    <Compile Include="Data\Link\Helpers\ApiParameterProvider.cs" />
+    <Compile Include="Data\Link\Helpers\PostParameterProvider.cs" />
+    <Compile Include="Data\Link\LinksRequest.cs" />
+    <Compile Include="Data\Link\Links\PromotedMainLinksRequest.cs" />
+    <Compile Include="Data\Link\Links\UpcomingMainLinksRequest.cs" />
+    <Compile Include="Data\Link\Helpers\MethodParameterProvider.cs" />
+    <Compile Include="Data\Link\Popular\PopularLinksRequest.cs" />
+    <Compile Include="Data\Link\Popular\PopularPromotedLinksRequests.cs" />
+    <Compile Include="Data\Link\Popular\PopularUpcomingLinksRequest.cs" />
+    <Compile Include="Data\Link\Search\SearchForLinksRequest.cs" />
+    <Compile Include="Data\Link\Search\SearchIndexLinksRequest.cs" />
+    <Compile Include="Data\Link\Search\BaseSearchLinksRequest.cs" />
+    <Compile Include="Data\Link\Top\TopForYearLinksRequest.cs" />
+    <Compile Include="Data\Link\Top\TopForYearMonthLinksRequest.cs" />
+    <Compile Include="Data\Link\Top\TopLinksRequest.cs" />
+    <Compile Include="Data\Link\Top\TopRandomHitsLinksRequest.cs" />
+    <Compile Include="Data\Link\User\UserPagedLinksRequest.cs" />
+    <Compile Include="Data\Link\User\UserAddedLinksRequest.cs" />
+    <Compile Include="Data\Link\User\UserBuriedLinksRequest.cs" />
+    <Compile Include="Data\Link\User\UserCommentedLinksRequest.cs" />
+    <Compile Include="Data\Link\User\UserDiggedLinksRequest.cs" />
+    <Compile Include="Data\Link\User\UserFavoritesLinksRequest.cs" />
+    <Compile Include="Data\Link\User\UserPublishedLinksRequest.cs" />
+    <Compile Include="Data\Link\User\UserLinksRequest.cs" />
+    <Compile Include="Data\LoginData.cs" />
+    <Compile Include="Data\Link\Links\MainLinksRequest.cs" />
+    <Compile Include="Data\Types\SortType.cs" />
+    <Compile Include="Exceptions\ApiExceptions\ApiErrorCode.cs" />
+    <Compile Include="Exceptions\ApiExceptions\Factories\InvalidApiKeyExceptionFactory.cs" />
+    <Compile Include="Exceptions\ApiExceptions\Factories\InvalidRequestParametersExceptionFactory.cs" />
+    <Compile Include="Exceptions\ApiExceptions\Factories\IWykopApiExceptionFactory.cs" />
+    <Compile Include="Exceptions\ApiExceptions\Factories\WykopServiceMaintenceExceptionFactory.cs" />
+    <Compile Include="Exceptions\ApiExceptions\InvalidWykopApiRequestException.cs" />
+    <Compile Include="Exceptions\ApiExceptions\WykopApiException.cs" />
+    <Compile Include="Exceptions\InternalLibraryException.cs" />
+    <Compile Include="Exceptions\NetworkConnectionException.cs" />
+    <Compile Include="Exceptions\NotConfiguredApiException.cs" />
+    <Compile Include="Exceptions\WykopApiExceptionFactory.cs" />
+    <Compile Include="Links\ILinksProvider.cs" />
+    <Compile Include="Links\LinksProvider.cs" />
+    <Compile Include="Login\LoginService.cs" />
+    <Compile Include="Model\Link.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\portable-net45+win8+wpa81\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\portable-net45+win8+wpa81\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp.Portable">
+      <HintPath>..\packages\FubarCoder.RestSharp.Portable.1.9.1\lib\portable-net40+sl50+win+wpa81+wp80+MonoAndroid10+MonoTouch10\RestSharp.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.28\lib\portable-net45+win8+wpa81\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.28\lib\portable-net45+win8+wpa81\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\Dig\" />
+    <Folder Include="Data\EntryComment\" />
+    <Folder Include="Data\Entry\" />
+    <Folder Include="Data\MyWykop\" />
+    <Folder Include="Data\Notification\" />
+    <Folder Include="Data\Profile\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
