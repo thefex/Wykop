@@ -38,10 +38,12 @@
     <TargetPlatform Include="Windows, Version=8.1" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\ApplicationSettingsDataContainer.cs" />
     <Compile Include="Common\Attributes\WykopApiExceptionFactoryAttribute.cs" />
     <Compile Include="Common\Constants\ApiConstants.cs" />
     <Compile Include="Common\Aspects\CheckApiConfigurationAspect.cs" />
     <Compile Include="Common\Aspects\RetryOnNetworkExceptionAspect.cs" />
+    <Compile Include="Common\Extensions\HashHelper.cs" />
     <Compile Include="Common\Extensions\RestRequestExtensions.cs" />
     <Compile Include="Common\WykopApiConfiguration.cs" />
     <Compile Include="Common\Constants\DataConstants.cs" />
@@ -87,9 +89,22 @@
     <Compile Include="Exceptions\WykopApiExceptionFactory.cs" />
     <Compile Include="Links\ILinksProvider.cs" />
     <Compile Include="Links\LinksProvider.cs" />
+    <Compile Include="Login\ILoginService.cs" />
     <Compile Include="Login\LoginService.cs" />
     <Compile Include="Model\Link.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\Dig\" />
+    <Folder Include="Data\EntryComment\" />
+    <Folder Include="Data\Entry\" />
+    <Folder Include="Data\MyWykop\" />
+    <Folder Include="Data\Notification\" />
+    <Folder Include="Data\Profile\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Threading.Tasks">
@@ -106,22 +121,11 @@
     </Reference>
     <Reference Include="System.Net.Http.Extensions">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.28\lib\portable-net45+win8+wpa81\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http.Primitives">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.28\lib\portable-net45+win8+wpa81\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\Dig\" />
-    <Folder Include="Data\EntryComment\" />
-    <Folder Include="Data\Entry\" />
-    <Folder Include="Data\MyWykop\" />
-    <Folder Include="Data\Notification\" />
-    <Folder Include="Data\Profile\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

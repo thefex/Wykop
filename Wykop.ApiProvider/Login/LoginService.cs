@@ -1,15 +1,16 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using RestSharp.Portable;
+using Wykop.ApiProvider.Common;
 using Wykop.ApiProvider.Common.Constants;
 using Wykop.ApiProvider.Common.Extensions;
 using Wykop.ApiProvider.Data;
-using Wykop.ApiProvider.Exceptions;
 
 namespace Wykop.ApiProvider.Login
 {
-    public class LoginService
+    public class LoginService : ILoginService
     {
         private readonly IApiDataContainer _dataContainer;
         private readonly RestClient _restClient;
@@ -18,6 +19,7 @@ namespace Wykop.ApiProvider.Login
         {
             _dataContainer = dataContainer;
             _restClient = new RestClient(ApiConstants.HostUrl);
+            _restClient.IgnoreResponseStatusCode = true;
         }
 
         public async Task<bool> IsLoggedIn()
@@ -34,16 +36,14 @@ namespace Wykop.ApiProvider.Login
 
         public async Task<bool> SignIn(LoginData loginData, CancellationToken cancellationToken)
         {
-            var loginRequest = new RestRequest(ApiConstants.UserResourceName, HttpMethod.Post);
+            string resourceUrl = ApiConstants.UserResourceName + "/login/appkey," + WykopApiConfiguration.ApiKey + "/";
+            var loginRequest = new RestRequest(resourceUrl, HttpMethod.Post);
+
+            loginRequest.AddParameter("login", loginData.Username, ParameterType.GetOrPost);
+            loginRequest.AddParameter("password", loginData.Password, ParameterType.GetOrPost);
+
             loginRequest.SignWykopRequest();
-
-            loginRequest.AddBody(new
-            {
-                login = loginData.Username,
-                password = loginData.Password
-            });
-
-            var response = await _restClient.Execute(loginRequest, cancellationToken);
+            var response = await _restClient.Execute<object>(loginRequest, cancellationToken);
 
             return true;
         }
