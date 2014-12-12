@@ -7,34 +7,23 @@ using Wykop.ApiProvider.Login;
 
 namespace Wykop.Commands
 {
-    public class LoginCommand : ICommand
+    public class LoginCommand
     {
-        private readonly CancellationToken _cancellationToken;
-        private readonly LoginService _loginService;
+        private readonly ILoginService _loginService;
         private readonly Func<Task> _onLoggedIn;
 
-        public LoginCommand(LoginService loginService, Func<Task> onLoggedIn, CancellationToken cancellationToken)
+        public LoginCommand(ILoginService loginService, Func<Task> onLoggedIn)
         {
             _loginService = loginService;
             _onLoggedIn = onLoggedIn;
-            _cancellationToken = cancellationToken;
         }
 
-        public bool CanExecute(object parameter)
+        public async Task Execute(LoginData loginData, CancellationToken cancellationToken)
         {
-            return true;
-        }
+            var loginResult = await _loginService.SignIn(loginData, cancellationToken);
 
-        public async void Execute(object parameter)
-        {
-            var loginData = (LoginData) parameter;
-
-            var loginResult = await _loginService.SignIn(loginData, _cancellationToken);
-
-            if (loginResult)
+            if (loginResult == LoginResult.Successful)
                 await _onLoggedIn();
         }
-
-        public event EventHandler CanExecuteChanged;
     }
 }

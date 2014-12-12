@@ -1,4 +1,5 @@
-﻿using Ninject.Modules;
+﻿using GalaSoft.MvvmLight.Views;
+using Ninject.Modules;
 
 namespace Wykop.Config
 {
@@ -6,6 +7,8 @@ namespace Wykop.Config
     {
         public override void Load()
         {
+            Bind<INavigationService>().To<NavigationService>();
+            Bind<IDialogService>().To<DialogService>();
         }
     }
 }

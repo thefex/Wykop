@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using RestSharp.Portable;
+using RestSharp.Portable.Serializers;
 using Wykop.ApiProvider.Common;
 using Wykop.ApiProvider.Common.Constants;
 using Wykop.ApiProvider.Common.Extensions;
@@ -34,18 +38,18 @@ namespace Wykop.ApiProvider.Login
             return await _dataContainer.Retrieve(DataConstants.UserKey);
         }
 
-        public async Task<bool> SignIn(LoginData loginData, CancellationToken cancellationToken)
+        public async Task<LoginResult> SignIn(LoginData loginData, CancellationToken cancellationToken)
         {
+            throw new NotImplementedException("not implemented yet.");
+
             string resourceUrl = ApiConstants.UserResourceName + "/login/appkey," + WykopApiConfiguration.ApiKey + "/";
             var loginRequest = new RestRequest(resourceUrl, HttpMethod.Post);
 
-            loginRequest.AddParameter("login", loginData.Username, ParameterType.GetOrPost);
-            loginRequest.AddParameter("password", loginData.Password, ParameterType.GetOrPost);
+            dynamic response = await _restClient.Execute<object>(loginRequest, cancellationToken);
 
-            loginRequest.SignWykopRequest();
-            var response = await _restClient.Execute<object>(loginRequest, cancellationToken);
+            var responseError = response.Data;
 
-            return true;
+            return LoginResult.Successful;
         }
     }
 }

@@ -40,7 +40,7 @@ namespace Wykop.ApiProvider.Data.LinkRequest
             foreach(var parameter in RequestParameters)
                 restRequest.Parameters.Add(parameter);
 
-            restRequest.SignWykopRequest();
+           // restRequest.SignWykopRequest();
 
             return restRequest;
         }

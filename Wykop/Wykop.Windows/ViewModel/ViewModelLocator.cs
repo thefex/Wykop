@@ -1,4 +1,5 @@
 ﻿using Ninject;
+using Wykop.Common;
 using Wykop.Config;
 
 namespace Wykop.ViewModel
@@ -9,12 +10,12 @@ namespace Wykop.ViewModel
 
         public ViewModelLocator()
         {
-            _ninjectKernel = new StandardKernel(new ApplicationKernelModule());
+            _ninjectKernel = new StandardKernel(new SharedNinjectModule(), new ApplicationKernelModule());
         }
 
-        public MainPageViewModel Main
+        public LoginPageViewModel Login
         {
-            get { return _ninjectKernel.Get<MainPageViewModel>(); }
+            get { return _ninjectKernel.Get<LoginPageViewModel>(); }
         }
     }
 }

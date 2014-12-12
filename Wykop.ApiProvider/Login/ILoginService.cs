@@ -8,6 +8,6 @@ namespace Wykop.ApiProvider.Login
     {
         Task<bool> IsLoggedIn();
         Task<string> GetLoggedUserKey();
-        Task<bool> SignIn(LoginData loginData, CancellationToken cancellationToken);
+        Task<LoginResult> SignIn(LoginData loginData, CancellationToken cancellationToken);
     }
 }

@@ -2,6 +2,10 @@
     x:Class="Wykop.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Wykop">
+    xmlns:local="using:Wykop"
+    xmlns:viewModel="using:Wykop.ViewModel">
 
+    <Application.Resources>
+        <viewModel:ViewModelLocator x:Key="ViewModelLocator"/>
+    </Application.Resources>
 </Application>
