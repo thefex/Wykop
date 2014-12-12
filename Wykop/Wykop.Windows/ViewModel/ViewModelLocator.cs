@@ -17,5 +17,10 @@ namespace Wykop.ViewModel
         {
             get { return _ninjectKernel.Get<LoginPageViewModel>(); }
         }
+
+        public DashboardViewModel Dashboard
+        {
+            get { return _ninjectKernel.Get<DashboardViewModel>(); }
+        }
     }
 }
