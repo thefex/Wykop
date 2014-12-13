@@ -5,12 +5,20 @@
     xmlns:local="using:Wykop"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:view="using:Wykop.View"
+    xmlns:behaviors="using:Wykop.Common.Behaviors"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=Dashboard}">
+    <interactivity:Interaction.Behaviors>
+        <behaviors:LoadDataOnPageLoadedBehavior/>
+    </interactivity:Interaction.Behaviors>
 
     <Hub Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
         <HubSection Header="Główna" MinWidth="600">
-            
+            <DataTemplate>
+                <view:DashboardHomeUserControl DataContext="{Binding Home}"/>
+            </DataTemplate>
         </HubSection>
         
         <HubSection Header="Gorące" MinWidth="300">

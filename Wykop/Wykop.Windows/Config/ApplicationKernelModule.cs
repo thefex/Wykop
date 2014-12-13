@@ -1,5 +1,9 @@
 ﻿using GalaSoft.MvvmLight.Views;
+using Ninject;
 using Ninject.Modules;
+using Wykop.Common;
+using Wykop.ViewModel;
+using Wykop.ViewModel.Dashboard;
 
 namespace Wykop.Config
 {
@@ -7,8 +11,19 @@ namespace Wykop.Config
     {
         public override void Load()
         {
-            Bind<INavigationService>().To<NavigationService>();
+            NavigationService navigationService = new NavigationService();
+            navigationService.Configure(NavigationPageKeys.DashboardPageKey, typeof(Dashboard));
+
+            Bind<INavigationService>().ToConstant(navigationService);
             Bind<IDialogService>().To<DialogService>();
+
+            BindViewModels();
+        }
+
+        private void BindViewModels()
+        {
+            Bind<DashboardViewModel>().ToSelf()
+                .WithPropertyValue("Home", context => context.Kernel.Get<HomeDashboardViewModel>());
         }
     }
 }
