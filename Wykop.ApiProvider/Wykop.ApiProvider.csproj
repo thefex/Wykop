@@ -94,7 +94,13 @@
     <Compile Include="Login\ILoginService.cs" />
     <Compile Include="Login\LoginResult.cs" />
     <Compile Include="Login\LoginService.cs" />
+    <Compile Include="Model\JSONDeserializers\Converter\TagsConverter.cs" />
+    <Compile Include="Model\JSONDeserializers\Converter\UsersListConverter.cs" />
+    <Compile Include="Model\JSONDeserializers\CustomLinkDeserializer.cs" />
+    <Compile Include="Model\Tag.cs" />
     <Compile Include="Model\Link.cs" />
+    <Compile Include="Model\Avatar.cs" />
+    <Compile Include="Model\UsersIdList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

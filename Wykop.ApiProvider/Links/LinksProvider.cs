@@ -22,9 +22,9 @@ namespace Wykop.ApiProvider.Links
         {
             var linksRequest = requestedLinks.BuildRestRequest();
 
-            var requestResults = await _restClient.Execute<object>(linksRequest, cancellationToken);
+            var requestResults = await _restClient.Execute<List<Link>>(linksRequest, cancellationToken);
 
-            return Enumerable.Empty<Link>();
+            return requestResults.Data;
         }
     }
 }
