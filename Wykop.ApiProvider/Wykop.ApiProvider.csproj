@@ -46,6 +46,7 @@
     <Compile Include="Common\Extensions\HashHelper.cs" />
     <Compile Include="Common\Extensions\RestRequestExtensions.cs" />
     <Compile Include="Common\LibraryAssemblyConfigAttributes.cs" />
+    <Compile Include="Common\ValueConverters\WykopImageUriSizeChangerValueConverter.cs" />
     <Compile Include="Common\WykopApiConfiguration.cs" />
     <Compile Include="Common\Constants\DataConstants.cs" />
     <Compile Include="Data\ApiParameter.cs" />
