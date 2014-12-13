@@ -10,14 +10,12 @@ namespace Wykop.ApiProvider.Common.Extensions
 {
     public static class RestRequestExtensions
     {
-        public static void SignWykopRequest(this RestRequest request, IList<string> parametersValues)
+        public static void SignWykopRequest(this RestRequest request)
         {
             if (!WykopApiConfiguration.IsConfigured())
                 throw new NotConfiguredApiException("You need to call WykopApiConfiguration.SetApiKey and secret");
 
-            string postParameterString = String.Empty;
-            if (parametersValues.Any())
-                postParameterString = parametersValues.OrderByDescending(x => x).Aggregate((previous, current) => previous + "," + current);
+            string postParameterString = request.GetPostParametersStringSepareted();
             
             string resourceUrl = ApiConstants.HostUrl + request.Resource;
             string signedApiHash = HashHelper.CalculateMD5Hash(WykopApiConfiguration.ApiSecret + resourceUrl + postParameterString);

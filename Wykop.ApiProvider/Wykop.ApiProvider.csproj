@@ -45,8 +45,10 @@
     <Compile Include="Common\Aspects\RetryOnNetworkExceptionAspect.cs" />
     <Compile Include="Common\Extensions\HashHelper.cs" />
     <Compile Include="Common\Extensions\RestRequestExtensions.cs" />
+    <Compile Include="Common\LibraryAssemblyConfigAttributes.cs" />
     <Compile Include="Common\WykopApiConfiguration.cs" />
     <Compile Include="Common\Constants\DataConstants.cs" />
+    <Compile Include="Data\ApiParameter.cs" />
     <Compile Include="Data\IApiDataContainer.cs" />
     <Compile Include="Data\Link\Favorites\LoggedUserFavoritesLinksRequest.cs" />
     <Compile Include="Data\Link\Helpers\ApiParameterProvider.cs" />

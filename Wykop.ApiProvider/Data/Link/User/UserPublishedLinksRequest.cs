@@ -20,8 +20,8 @@ namespace Wykop.ApiProvider.Data.LinkRequest.User
         {
             base.BuildParameters();
 
-            var pageParameter = ApiParameterProvider.GetPageParameter(RequestedPage);
-            AddParameterToRequest(pageParameter);
+            //var pageParameter = ApiParameterProvider.GetPageParameter(RequestedPage);
+            //AddParameterToRequest(pageParameter);
         }
     }
 }

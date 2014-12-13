@@ -6,8 +6,8 @@ namespace Wykop.ApiProvider.Data.LinkRequest.User
     {
         public UserCommentedLinksRequest(string userName) : base(userName)
         {
-            var pageParameter = ApiParameterProvider.GetPageParameter(RequestedPage);
-            AddParameterToRequest(pageParameter);
+            //var pageParameter = ApiParameterProvider.GetPageParameter(RequestedPage);
+            //AddParameterToRequest(pageParameter);
         }
 
         public int RequestedPage { get; set; }

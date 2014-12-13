@@ -22,8 +22,8 @@ namespace Wykop.ApiProvider.Data.LinkRequest.Search
         {
             base.BuildParameters();
 
-            var pageParameter = ApiParameterProvider.GetPageParameter(RequestedPage);
-            AddParameterToRequest(pageParameter);
+            //var pageParameter = ApiParameterProvider.GetPageParameter(RequestedPage);
+            //AddParameterToRequest(pageParameter);
 
             var searchQuery = PostParameterProvider.GetSearchQueryParameter(SearchQuery);
             AddParameterToRequest(searchQuery);

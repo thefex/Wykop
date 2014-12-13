@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using RestSharp.Portable;
@@ -21,8 +22,9 @@ namespace Wykop.ApiProvider.Links
         {
             var linksRequest = requestedLinks.BuildRestRequest();
 
-            var requestResults = await _restClient.Execute<IEnumerable<Link>>(linksRequest, cancellationToken);
-            return requestResults.Data;
+            var requestResults = await _restClient.Execute<object>(linksRequest, cancellationToken);
+
+            return Enumerable.Empty<Link>();
         }
     }
 }

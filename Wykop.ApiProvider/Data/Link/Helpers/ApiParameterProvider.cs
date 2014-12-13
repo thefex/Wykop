@@ -1,27 +1,35 @@
 ﻿using RestSharp.Portable;
 using Wykop.ApiProvider.Common;
+using Wykop.ApiProvider.Data.Types;
 
 namespace Wykop.ApiProvider.Data.LinkRequest.Helpers
 {
     public class ApiParameterProvider
     {
-        public static Parameter GetApplicationKeyParameter()
+        public static ApiParameter GetApplicationKeyParameter()
         {
-            return new Parameter()
+            return new ApiParameter()
             {
                 Name = "appkey",
-                Value = WykopApiConfiguration.ApiKey,
-                Type = ParameterType.UrlSegment
+                Value = WykopApiConfiguration.ApiKey
             };
         }
 
-        public static Parameter GetPageParameter(int pageNumber)
+        public static ApiParameter GetPageParameter(int pageNumber)
         {
-            return new Parameter()
+            return new ApiParameter()
             {
                 Name = "page",
-                Value = pageNumber,
-                Type = ParameterType.UrlSegment
+                Value = pageNumber.ToString(),
+            };
+        }
+
+        public static ApiParameter GetSortParameter(SortType sortType)
+        {
+            return new ApiParameter()
+            {
+                Name = "sort",
+                Value = sortType.TextValue
             };
         }
     }
