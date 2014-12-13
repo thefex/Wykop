@@ -112,8 +112,10 @@
     <SDKReference Include="TestPlatform, Version=11.0" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\RestRequestAsserts.cs" />
     <Compile Include="Data\Link\LinksRequestTestFixture.cs" />
     <Compile Include="Data\Link\Links\PromotedMainLinksRequestUnitTests.cs" />
+    <Compile Include="Data\Link\Links\UpcomingMainLinksRequestUnitTests.cs" />
     <Compile Include="Data\RestSharpSetupFixture.cs" />
     <Compile Include="Data\UnitTestsConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
