@@ -21,42 +21,25 @@ namespace Wykop.ApiProvider.UnitTests.Data.Link.Links
 
         private const int requestedPage = 2;
         private readonly SortType sortType = SortType.CreateSortByDay();
-        private readonly Uri expectedUriResult = new Uri("http://a.wykop.pl/Links/Promoted/appkey," + 
-            UnitTestsConstants.AppKey + ",page,2,sort,day");
-        private PromotedMainLinksRequest promotedMainLinksRequest;
+        private PromotedMainLinksRequest systemUnderTest;
 
         [SetUp]
         public void SetupTests()
         {
-            promotedMainLinksRequest = new PromotedMainLinksRequest()
+            systemUnderTest = new PromotedMainLinksRequest()
             {
                 RequestedPage = requestedPage,
                 SortType = sortType
             };
+
+            ExpectedRequestUri = new Uri("http://a.wykop.pl/Links/Promoted/appkey," + UnitTestsConstants.AppKey + ",page,2,sort,day");
+            LinksRequest = systemUnderTest;
         }
-
-        [Test]
-        public void BuildRestRequest_IsProperResourceUrlCreated()
-        {
-            var restRequest = promotedMainLinksRequest.BuildRestRequest();
-
-            Uri buildedRequestUri = RestClient.BuildUri(restRequest);
-
-            Assert.AreEqual(expectedUriResult, buildedRequestUri, "Request URI is invalid.");
-        }
-            
-        [Test]
-        public void BuildRestRequest_ProperApiSignHttpHeaderShouldBeSet()
-        {
-            var restRequest = promotedMainLinksRequest.BuildRestRequest();
-
-            AssertThatRequestIsCorrectlySigned(restRequest, expectedUriResult);
-        }
-
+  
         [Test]
         public void BuildRestRequest_PostBodyShouldBeEmpty()
         {
-            var restRequest = promotedMainLinksRequest.BuildRestRequest();
+            var restRequest = systemUnderTest.BuildRestRequest();
             
             bool containsPostParameters = restRequest.Parameters.Any(x =>
                 (restRequest.Method == HttpMethod.Post && x.Type == ParameterType.GetOrPost) ||
