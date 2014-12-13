@@ -6,6 +6,12 @@
     xmlns:viewModel="using:Wykop.ViewModel">
 
     <Application.Resources>
-        <viewModel:ViewModelLocator x:Key="ViewModelLocator"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="View/Resources/ApplicationResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <viewModel:ViewModelLocator x:Key="ViewModelLocator"/>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

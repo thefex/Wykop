@@ -14,7 +14,7 @@
         <behaviors:LoadDataOnPageLoadedBehavior/>
     </interactivity:Interaction.Behaviors>
 
-    <Hub Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+    <Hub Background="{StaticResource ApplicationPageBackgroundThemeBrush}" Margin="0 -50 0 0">
         <HubSection Header="Główna" MinWidth="600">
             <DataTemplate>
                 <view:DashboardHomeUserControl DataContext="{Binding Home}"/>

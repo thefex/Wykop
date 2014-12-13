@@ -123,6 +123,8 @@
     <Compile Include="View\DashboardHomeUserControl.xaml.cs">
       <DependentUpon>DashboardHomeUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\TemplateSelector\HomeDashboardDataTemplateSelector.cs" />
+    <Compile Include="View\TemplateSelector\HomeDashboardSizedStyleSelector.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -150,6 +152,11 @@
     <Page Include="View\DashboardHomeUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Resources\ApplicationResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
   </ItemGroup>
   <ItemGroup>

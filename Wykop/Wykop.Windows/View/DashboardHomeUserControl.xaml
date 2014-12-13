@@ -5,20 +5,74 @@
     xmlns:local="using:Wykop.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:templateSelector="using:Wykop.View.TemplateSelector"
+    xmlns:valueConverters="using:Wykop.ApiProvider.Common.ValueConverters"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
+    
+    <UserControl.Resources>
+        <valueConverters:WykopImageUriSizeChangerValueConverter x:Key="FullSizePreviewImageUriValueConverter"
+                                                               RequestedWidth="287" RequestedHeight="186"/>
 
-    <GridView ItemsSource="{Binding HomeLinks}">
-        <GridView.ItemTemplate>
-            <DataTemplate>
-                
-            </DataTemplate>
-        </GridView.ItemTemplate>
+        <Style x:Key="WithPreviewStyle" TargetType="GridViewItem">
+            <Setter Property="VariableSizedWrapGrid.RowSpan" Value="6"/>
+        </Style>
         
+        <Style x:Key="WithoutPreviewStyle" TargetType="GridViewItem">
+            <Setter Property="VariableSizedWrapGrid.RowSpan" Value="3"/>
+        </Style>
+        
+        <DataTemplate x:Key="WithPreviewDataTemplate">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="186"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Image Source="{Binding PreviewImage, Converter={StaticResource FullSizePreviewImageUriValueConverter}}" Grid.Row="0" Stretch="UniformToFill"
+                       VerticalAlignment="Top"/>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="{Binding Title}" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                    <TextBlock Text="{Binding Description}" Style="{StaticResource BodyTextBlockStyle}"
+                               Grid.Row="1"/>
+                </Grid>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="WithoutPreviewDataTemplate">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Text="{Binding Title}" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                <TextBlock Text="{Binding Description}" Style="{StaticResource BodyTextBlockStyle}"
+                            Grid.Row="1"/>
+            </Grid>
+        </DataTemplate>
+
+        <templateSelector:HomeDashboardDataTemplateSelector x:Key="HomeDashboardDataTemplateSelector"
+                                                            WithPreview="{StaticResource WithPreviewDataTemplate}"
+                                                            WithoutPreview="{StaticResource WithoutPreviewDataTemplate}"/>
+
+        <templateSelector:HomeDashboardSizedStyleSelector x:Key="HomeDashboardSizedStyleSelector"
+                                                          WithPreviewStyle="{StaticResource WithPreviewStyle}"
+                                                          WithoutPreviewStyle="{StaticResource WithoutPreviewStyle}"/>
+    </UserControl.Resources>
+
+    <GridView ItemsSource="{Binding HomeLinks}"  
+              ItemTemplateSelector="{StaticResource HomeDashboardDataTemplateSelector}"
+              ItemContainerStyleSelector="{StaticResource HomeDashboardSizedStyleSelector}">
         <GridView.ItemsPanel>
             <ItemsPanelTemplate>
-                <VariableSizedWrapGrid Orientation="Horizontal" MaximumRowsOrColumns="3"/>
+                <VariableSizedWrapGrid Orientation="Vertical" ItemWidth="288" ItemHeight="50"/>
             </ItemsPanelTemplate>
         </GridView.ItemsPanel>
     </GridView>

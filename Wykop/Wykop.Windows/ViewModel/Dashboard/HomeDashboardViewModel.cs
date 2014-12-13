@@ -15,6 +15,7 @@ namespace Wykop.ViewModel.Dashboard
         public HomeDashboardViewModel(ILinksProvider linksProvider, ViewServices viewServices) : base(viewServices)
         {
             _linksProvider = linksProvider;
+            HomeLinks = new ObservableCollection<Link>();
         }
 
         public ObservableCollection<Link> HomeLinks { get; set; }
@@ -27,7 +28,6 @@ namespace Wykop.ViewModel.Dashboard
 
         private async Task RefreshHomeLinks()
         {
-            HomeLinks = new ObservableCollection<Link>();
             var promotedMainLinksRequest = new PromotedMainLinksRequest()
             {
                 RequestedPage = 1,
