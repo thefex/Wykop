@@ -49,7 +49,13 @@
     <Compile Include="Common\ValueConverters\WykopImageUriSizeChangerValueConverter.cs" />
     <Compile Include="Common\WykopApiConfiguration.cs" />
     <Compile Include="Common\Constants\DataConstants.cs" />
+    <Compile Include="DataProviders\DefaultWykopDataCollectionProvider.cs" />
+    <Compile Include="DataProviders\IWykopDataCollectionProvider.cs" />
     <Compile Include="Data\ApiParameter.cs" />
+    <Compile Include="Data\Entry\EntriesRequest.cs" />
+    <Compile Include="Data\Entry\Stream\StreamEntriesRequest.cs" />
+    <Compile Include="Data\Entry\Stream\StreamHotEntriesRequest.cs" />
+    <Compile Include="Data\Entry\Stream\StreamIndexEntriesRequest.cs" />
     <Compile Include="Data\IApiDataContainer.cs" />
     <Compile Include="Data\Link\Favorites\LoggedUserFavoritesLinksRequest.cs" />
     <Compile Include="Data\Link\Helpers\ApiParameterProvider.cs" />
@@ -79,6 +85,7 @@
     <Compile Include="Data\LoginData.cs" />
     <Compile Include="Data\Link\Links\MainLinksRequest.cs" />
     <Compile Include="Data\Types\SortType.cs" />
+    <Compile Include="Data\WykopRequestBase.cs" />
     <Compile Include="Exceptions\ApiExceptions\ApiErrorCode.cs" />
     <Compile Include="Exceptions\ApiExceptions\Factories\InvalidApiKeyExceptionFactory.cs" />
     <Compile Include="Exceptions\ApiExceptions\Factories\InvalidRequestParametersExceptionFactory.cs" />
@@ -95,6 +102,7 @@
     <Compile Include="Login\ILoginService.cs" />
     <Compile Include="Login\LoginResult.cs" />
     <Compile Include="Login\LoginService.cs" />
+    <Compile Include="Model\Entry.cs" />
     <Compile Include="Model\JSONDeserializers\Converter\TagsConverter.cs" />
     <Compile Include="Model\JSONDeserializers\Converter\UsersListConverter.cs" />
     <Compile Include="Model\JSONDeserializers\CustomLinkDeserializer.cs" />
@@ -111,7 +119,6 @@
   <ItemGroup>
     <Folder Include="Data\Dig\" />
     <Folder Include="Data\EntryComment\" />
-    <Folder Include="Data\Entry\" />
     <Folder Include="Data\MyWykop\" />
     <Folder Include="Data\Notification\" />
     <Folder Include="Data\Profile\" />
