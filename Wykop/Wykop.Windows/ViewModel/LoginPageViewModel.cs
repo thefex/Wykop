@@ -31,7 +31,7 @@ namespace Wykop.ViewModel
                 Password = Password
             };
 
-            await _loginCommand.Execute(loginData, CurrentCancellationToken);
+          //  await _loginCommand.Execute(loginData, CurrentCancellationToken);
         }
 
         
