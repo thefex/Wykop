@@ -7,7 +7,7 @@ using Wykop.ApiProvider.UnitTests.Common;
 namespace Wykop.ApiProvider.UnitTests.Data.Link.Links
 {
     [TestFixture]
-    public class UpcomingMainLinksRequestUnitTests : LinksRequestTestFixture
+    public class UpcomingMainLinksRequestUnitTests : WykopRequestBaseTestFixture
     {
         /* Method Parameters: none
          * API Parameters:
@@ -30,7 +30,7 @@ namespace Wykop.ApiProvider.UnitTests.Data.Link.Links
                 SortType = sortType
             };
 
-            LinksRequest = systemUnderTest;
+            WykopRequest = systemUnderTest;
             ExpectedRequestUri = new Uri("http://a.wykop.pl/Links/Upcoming/appkey," + UnitTestsConstants.AppKey + 
                                         ",page,3,sort,month");
         }

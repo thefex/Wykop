@@ -113,11 +113,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\RestRequestAsserts.cs" />
-    <Compile Include="Data\Link\LinksRequestTestFixture.cs" />
+    <Compile Include="Data\Entry\Stream\StreamHotEntriesRequestUnitTests.cs" />
+    <Compile Include="Data\Entry\Stream\StreamIndexEntriesRequestUnitTests.cs" />
     <Compile Include="Data\Link\Links\PromotedMainLinksRequestUnitTests.cs" />
     <Compile Include="Data\Link\Links\UpcomingMainLinksRequestUnitTests.cs" />
     <Compile Include="Data\RestSharpSetupFixture.cs" />
     <Compile Include="Data\UnitTestsConstants.cs" />
+    <Compile Include="Data\WykopRequestBaseTestFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -156,6 +158,7 @@
       <Name>Wykop.ApiProvider</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>

@@ -3,15 +3,16 @@ using System.Linq;
 using NUnit.Framework;
 using RestSharp.Portable;
 using Wykop.ApiProvider.Common.Extensions;
+using Wykop.ApiProvider.Data;
 using Wykop.ApiProvider.Data.LinkRequest;
 
-namespace Wykop.ApiProvider.UnitTests.Data.Link
+namespace Wykop.ApiProvider.UnitTests.Data
 {
     [TestFixture]
-    public abstract class LinksRequestTestFixture 
+    public class WykopRequestBaseTestFixture
     {
         protected RestClient RestClient { get; private set; }
-        protected LinksRequest LinksRequest { get; set; }
+        protected WykopRequestBase WykopRequest { get; set; }
         protected Uri ExpectedRequestUri { get; set; }
 
         [SetUp]
@@ -23,7 +24,7 @@ namespace Wykop.ApiProvider.UnitTests.Data.Link
         [Test]
         public void BuildRestRequest_IsProperResourceUrlCreated()
         {
-            var restRequest = LinksRequest.BuildRestRequest();
+            var restRequest = WykopRequest.BuildRestRequest();
             Uri buildedRequestUri = RestClient.BuildUri(restRequest);
 
             Assert.AreEqual(ExpectedRequestUri, buildedRequestUri, "Request URI is invalid.");
@@ -32,7 +33,7 @@ namespace Wykop.ApiProvider.UnitTests.Data.Link
         [Test]
         public void BuildRestRequest_ProperApiSignHttpHeaderShouldBeSet()
         {
-            var restRequest = LinksRequest.BuildRestRequest();
+            var restRequest = WykopRequest.BuildRestRequest();
 
             AssertThatRequestIsCorrectlySigned(restRequest, ExpectedRequestUri);
         }
@@ -42,11 +43,12 @@ namespace Wykop.ApiProvider.UnitTests.Data.Link
             string apiSignStringToHash = UnitTestsConstants.ApiSecret + expectedUri.OriginalString;
             string apiSignHash = HashHelper.CalculateMD5Hash(apiSignStringToHash);
 
-            var apiSignHeaderParameter = 
+            var apiSignHeaderParameter =
                 request.Parameters.SingleOrDefault(x => x.Name == "apisign" && x.Type == ParameterType.HttpHeader);
 
             Assert.NotNull(apiSignHeaderParameter, "Request doesn't contain apisign http header.");
             Assert.AreEqual(apiSignHash, (string)apiSignHeaderParameter.Value, "APISign value is invalid.");
         }
+
     }
 }
