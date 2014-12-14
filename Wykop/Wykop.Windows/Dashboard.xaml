@@ -26,7 +26,9 @@
         </HubSection>
         
         <HubSection Header="Wykopalisko" MinWidth="300">
-            
+            <DataTemplate>
+                <view:UpcomingDashboardUserControl DataContext="{Binding Wykopalisko}"/>
+            </DataTemplate>
         </HubSection>
     </Hub>
 </Page>

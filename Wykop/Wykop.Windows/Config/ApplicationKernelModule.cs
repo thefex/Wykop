@@ -23,7 +23,8 @@ namespace Wykop.Config
         private void BindViewModels()
         {
             Bind<DashboardViewModel>().ToSelf()
-                .WithPropertyValue("Home", context => context.Kernel.Get<HomeDashboardViewModel>());
+                .WithPropertyValue("Home", context => context.Kernel.Get<HomeDashboardViewModel>())
+                .WithPropertyValue("Wykopalisko", context => context.Kernel.Get<WykopaliskoDashboardViewModel>());
         }
     }
 }
