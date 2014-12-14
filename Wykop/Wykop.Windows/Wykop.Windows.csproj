@@ -17,6 +17,8 @@
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <PackageCertificateKeyFile>Wykop.Windows_TemporaryKey.pfx</PackageCertificateKeyFile>
     <DontImportPostSharp>True</DontImportPostSharp>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundlePlatforms>neutral</AppxBundlePlatforms>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -123,6 +125,9 @@
     <Compile Include="View\DashboardHomeUserControl.xaml.cs">
       <DependentUpon>DashboardHomeUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\DashboardHotUserControl.xaml.cs">
+      <DependentUpon>DashboardHotUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\TemplateSelector\HomeDashboardDataTemplateSelector.cs" />
     <Compile Include="View\TemplateSelector\HomeDashboardSizedStyleSelector.cs" />
     <Compile Include="View\UpcomingDashboardUserControl.xaml.cs">
@@ -153,6 +158,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\DashboardHomeUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DashboardHotUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

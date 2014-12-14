@@ -22,7 +22,9 @@
         </HubSection>
         
         <HubSection Header="Gorące" MinWidth="300">
-            
+            <DataTemplate>
+                <view:DashboardHotUserControl DataContext="{Binding Hot}"/>
+            </DataTemplate>
         </HubSection>
         
         <HubSection Header="Wykopalisko" MinWidth="300">

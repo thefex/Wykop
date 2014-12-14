@@ -14,7 +14,10 @@ namespace Wykop.ApiProvider.Data
             RequestParameters = new List<Parameter>();
             ApiParameters = new List<ApiParameter>();
             RequestHttpMethod = HttpMethod.Get;
+            ShouldIncludeHtml = true;
         }
+
+        public bool ShouldIncludeHtml { get; set; }
 
         private IList<Parameter> RequestParameters { get; set; }
         private IList<ApiParameter> ApiParameters { get; set; }
@@ -62,6 +65,12 @@ namespace Wykop.ApiProvider.Data
                 apiParametersString =
                     ApiParameters.Select(x => x.ToString())
                         .Aggregate((before, current) => before + "," + current);
+            }
+
+            if (!ShouldIncludeHtml)
+            {
+                apiParametersString += (string.IsNullOrWhiteSpace(apiParametersString)) ? "" : ",";
+                apiParametersString += "output,clear";
             }
 
             var resourceUrl = GetResourceTypeName() + "/" + GetResourceMethodName();

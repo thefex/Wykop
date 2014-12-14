@@ -42,21 +42,21 @@ namespace Wykop.ApiProvider.Model
         [JsonProperty("url")]
         public Uri Url { get; internal set; }
 
-        // TODO: extract it to avatar object
-        [JsonProperty("receiver")]
-        public string Receiver { get; internal set; }
+        //// TODO: extract it to avatar object
+        //[JsonProperty("receiver")]
+        //public string Receiver { get; internal set; }
 
-        [JsonProperty("receiver_avatar_med")]
-        public Uri ReceiverMediumAvatar { get; internal set; }
+        //[JsonProperty("receiver_avatar_med")]
+        //public Uri ReceiverMediumAvatar { get; internal set; }
 
-        [JsonProperty("receiver_avatar_lo")]
-        public Uri ReceiverSmallAvatar { get; internal set; }
+        //[JsonProperty("receiver_avatar_lo")]
+        //public Uri ReceiverSmallAvatar { get; internal set; }
 
-        [JsonProperty("receiver_avatar")]
-        public Uri ReceiverDefaultAvatar { get; internal set; }
+        //[JsonProperty("receiver_avatar")]
+        //public Uri ReceiverDefaultAvatar { get; internal set; }
 
-        [JsonProperty("receiver_group")]
-        public int ReceiverGroup { get; internal set; }
+        //[JsonProperty("receiver_group")]
+        //public int ReceiverGroup { get; internal set; }
 
         // end todo
 

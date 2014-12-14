@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Wykop.ApiProvider.Data.Entry;
 using Wykop.ApiProvider.Data.Entry.Stream;
 using Wykop.ApiProvider.DataProviders;
-using Wykop.ApiProvider.Entries;
 using Wykop.ApiProvider.Model;
 using Wykop.View;
 
@@ -30,7 +29,10 @@ namespace Wykop.ViewModel.Dashboard
 
         private async Task RefreshHotEntries()
         {
-            var hotEntriesRequest = new StreamHotEntriesRequest();
+            var hotEntriesRequest = new StreamHotEntriesRequest()
+            {
+                ShouldIncludeHtml = false
+            };
             var hotEntries = await _entriesProvider.GetDataCollection(hotEntriesRequest, CurrentCancellationToken);
 
             HotEntries = new ObservableCollection<Entry>(hotEntries);
