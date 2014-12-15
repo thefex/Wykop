@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
+﻿using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using RestSharp.Portable;
-using RestSharp.Portable.Serializers;
 using Wykop.ApiProvider.Common;
 using Wykop.ApiProvider.Common.Constants;
 using Wykop.ApiProvider.Common.Extensions;
@@ -17,13 +12,14 @@ namespace Wykop.ApiProvider.Login
     public class LoginService : ILoginService
     {
         private readonly IApiDataContainer _dataContainer;
+        private readonly UserApplicationKeyProvider _userApplicationKeyProvider;
         private readonly RestClient _restClient;
 
         public LoginService(IApiDataContainer dataContainer)
         {
             _dataContainer = dataContainer;
+            _userApplicationKeyProvider = new UserApplicationKeyProvider(dataContainer);
             _restClient = new RestClient(ApiConstants.HostUrl);
-            _restClient.IgnoreResponseStatusCode = true;
         }
 
         public async Task<bool> IsLoggedIn()
@@ -40,16 +36,31 @@ namespace Wykop.ApiProvider.Login
 
         public async Task<LoginResult> SignIn(LoginData loginData, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException("not implemented yet.");
+            bool isApplicationConnected = await _userApplicationKeyProvider.ConnectToApplication(loginData);
 
-            string resourceUrl = ApiConstants.UserResourceName + "/login/appkey," + WykopApiConfiguration.ApiKey + "/";
-            var loginRequest = new RestRequest(resourceUrl, HttpMethod.Post);
+            if (!isApplicationConnected)
+                return LoginResult.InvalidLoginData;
 
+            var loginRequest = await CreateUserLoginRequest();
             dynamic response = await _restClient.Execute<object>(loginRequest, cancellationToken);
 
-            var responseError = response.Data;
-
             return LoginResult.Successful;
+        }
+
+        private async Task<RestRequest> CreateUserLoginRequest()
+        {
+            var userAccountKey = await _userApplicationKeyProvider.GetConnectedAccountKey();
+
+            var resourceUrl = ApiConstants.UserResourceName + "/login/appkey," + WykopApiConfiguration.ApiKey + "/";
+            var loginRequest = new RestRequest(resourceUrl, HttpMethod.Post);
+            loginRequest.Parameters.Add(new Parameter()
+            {
+                Type = ParameterType.GetOrPost,
+                Name = "accountkey",
+                Value = userAccountKey
+            });
+            loginRequest.SignWykopRequest();
+            return loginRequest;
         }
     }
 }
