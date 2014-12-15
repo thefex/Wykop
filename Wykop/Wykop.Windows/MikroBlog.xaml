@@ -27,7 +27,9 @@
             <TextBlock Text="Mikroblog" Style="{StaticResource HeaderTextBlockStyle}" Margin="25 0 0 0"></TextBlock>
         </StackPanel>
         
-        <ListView Grid.Row="1" ItemsSource="{Binding Entries}">
+        <ListView Grid.Row="1" ItemsSource="{Binding Entries}" SelectionMode="None"
+                  IncrementalLoadingThreshold="1"
+                  IncrementalLoadingTrigger="Edge">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>

@@ -1,9 +1,12 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Threading;
 using System.Threading.Tasks;
 using Wykop.ApiProvider.Data.Entry;
 using Wykop.ApiProvider.Data.Entry.Stream;
 using Wykop.ApiProvider.DataProviders;
 using Wykop.ApiProvider.Model;
+using Wykop.Common;
 using Wykop.View;
 
 namespace Wykop.ViewModel
@@ -16,7 +19,7 @@ namespace Wykop.ViewModel
             : base(viewServices)
         {
             _entriesProvider = entriesProvider;
-            Entries = new ObservableCollection<Entry>();
+            Entries = new IncrementalLoadingObservableCollection<Entry>(LoadEntries);
         }
 
         public ObservableCollection<Entry> Entries { get; set; }
@@ -24,19 +27,17 @@ namespace Wykop.ViewModel
         public override async Task Load()
         {
             await base.Load();
-            await LoadEntries();
         }
 
-        private async Task LoadEntries()
+        private Task<IEnumerable<Entry>> LoadEntries(int page, CancellationToken cancellationToken)
         {
             var indexEntriesRequest = new StreamIndexEntriesRequest()
             {
-                RequestedPage = 1,
+                RequestedPage = page,
                 ShouldIncludeHtml = false
             };
 
-            var indexEntries = await _entriesProvider.GetDataCollection(indexEntriesRequest, CurrentCancellationToken);
-            Entries = new ObservableCollection<Entry>(indexEntries);
+            return _entriesProvider.GetDataCollection(indexEntriesRequest, CurrentCancellationToken);
         }
     }
 }
