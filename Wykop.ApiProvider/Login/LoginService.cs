@@ -2,10 +2,12 @@
 using System.Threading;
 using System.Threading.Tasks;
 using RestSharp.Portable;
+using RestSharp.Portable.Deserializers;
 using Wykop.ApiProvider.Common;
 using Wykop.ApiProvider.Common.Constants;
 using Wykop.ApiProvider.Common.Extensions;
 using Wykop.ApiProvider.Data;
+using Wykop.ApiProvider.Model.Internal;
 
 namespace Wykop.ApiProvider.Login
 {
@@ -42,7 +44,8 @@ namespace Wykop.ApiProvider.Login
                 return LoginResult.InvalidLoginData;
 
             var loginRequest = await CreateUserLoginRequest();
-            dynamic response = await _restClient.Execute<object>(loginRequest, cancellationToken);
+            var response = await _restClient.Execute<UserLogin>(loginRequest, cancellationToken);
+            await _dataContainer.Save(DataConstants.UserKey, response.Data.UserKey);
 
             return LoginResult.Successful;
         }

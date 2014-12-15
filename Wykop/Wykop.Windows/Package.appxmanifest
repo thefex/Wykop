@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-  <Identity Name="c7655a60-c39c-4d11-aac6-9d30f2b262d5" Publisher="CN=mov" Version="1.0.0.2" />
+  <Identity Name="c7655a60-c39c-4d11-aac6-9d30f2b262d5" Publisher="CN=mov" Version="1.0.0.3" />
   <Properties>
     <DisplayName>Wykop.Windows</DisplayName>
     <PublisherDisplayName>mov</PublisherDisplayName>

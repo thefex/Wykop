@@ -16,7 +16,7 @@ namespace Wykop.ViewModel
         public LoginPageViewModel(ILoginService loginService, ViewServices viewServices)
             : base(viewServices)
         {
-            _loginCommand = new LoginCommand(loginService, async () => { });
+            _loginCommand = new LoginCommand(loginService, viewServices.Dialog, async () => Navigation.NavigateTo(NavigationPageKeys.DashboardPageKey));
 
             LoginCommand = new RelayCommand(async () => await TryRunAsynchronousOperation(Login));
             SkipLoginCommand = new RelayCommand(() =>
@@ -31,7 +31,7 @@ namespace Wykop.ViewModel
                 Password = Password
             };
 
-          //  await _loginCommand.Execute(loginData, CurrentCancellationToken);
+            await _loginCommand.Execute(loginData, CurrentCancellationToken);
         }
 
         

@@ -104,6 +104,7 @@
     <Compile Include="Login\LoginService.cs" />
     <Compile Include="Login\UserApplicationKeyProvider.cs" />
     <Compile Include="Model\Entry.cs" />
+    <Compile Include="Model\Internal\UserLogin.cs" />
     <Compile Include="Model\JSONDeserializers\Converter\TagsConverter.cs" />
     <Compile Include="Model\JSONDeserializers\Converter\UsersListConverter.cs" />
     <Compile Include="Model\JSONDeserializers\CustomLinkDeserializer.cs" />
