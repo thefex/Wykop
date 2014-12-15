@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
 using PostSharp.Patterns.Model;
 using Wykop.Common.Interfaces;
@@ -19,6 +20,7 @@ namespace Wykop.ViewModel
         {
             _viewServices = viewServices;
             _cancellationTokenSource = new CancellationTokenSource();
+            NavigateBackCommand = new RelayCommand(Navigation.GoBack);
         }
 
         protected CancellationToken CurrentCancellationToken
@@ -26,6 +28,7 @@ namespace Wykop.ViewModel
             get { return _cancellationTokenSource.Token; }
         }
 
+        public RelayCommand NavigateBackCommand { get; private set; }
         public bool IsOperationInProgress { get; set; }
         public bool IsOperationCancelling { get; set; }
 
