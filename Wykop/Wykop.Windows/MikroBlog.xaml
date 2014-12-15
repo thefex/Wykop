@@ -1,0 +1,61 @@
+﻿<Page
+    x:Name="pageRoot"
+    x:Class="Wykop.MikroBlog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Wykop"
+    xmlns:common="using:Wykop.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:behaviors="using:Wykop.Common.Behaviors"
+    mc:Ignorable="d"
+    DataContext="{Binding MikroBlog, Source={StaticResource ViewModelLocator}}">
+    <interactivity:Interaction.Behaviors>
+        <behaviors:LoadDataOnPageLoadedBehavior/>
+    </interactivity:Interaction.Behaviors>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Margin="35">
+            <Button Style="{StaticResource NavigationBackButtonNormalStyle}" VerticalAlignment="Center" HorizontalAlignment="Right"
+                    Command="{Binding NavigateBackCommand}"/>
+            <TextBlock Text="Mikroblog" Style="{StaticResource HeaderTextBlockStyle}" Margin="25 0 0 0"></TextBlock>
+        </StackPanel>
+        
+        <ListView Grid.Row="1" ItemsSource="{Binding Entries}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                                <TextBlock Text="{Binding Author}"/>
+                                <TextBlock Text="{Binding CreatedDate}"></TextBlock>
+                            </StackPanel>
+
+                            <TextBlock Text="{Binding VoteCount}" Grid.Column="1" HorizontalAlignment="Right"></TextBlock>
+                        </Grid>
+
+                        <TextBlock Text="{Binding Body}" Grid.Row="1" Style="{StaticResource BodyTextBlockStyle}"
+                                   TextWrapping="Wrap" Grid.ColumnSpan="2" HorizontalAlignment="Left"
+                                   Foreground="DarkGray"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>

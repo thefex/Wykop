@@ -11,13 +11,19 @@ namespace Wykop.Config
     {
         public override void Load()
         {
-            NavigationService navigationService = new NavigationService();
-            navigationService.Configure(NavigationPageKeys.DashboardPageKey, typeof(Dashboard));
-
-            Bind<INavigationService>().ToConstant(navigationService);
+            BindAndConfigureNavigationService();
             Bind<IDialogService>().To<DialogService>();
 
             BindViewModels();
+        }
+
+        private void BindAndConfigureNavigationService()
+        {
+            NavigationService navigationService = new NavigationService();
+            navigationService.Configure(NavigationPageKeys.DashboardPageKey, typeof(Dashboard));
+            navigationService.Configure(NavigationPageKeys.MikroblogPageKey, typeof(MikroBlog));
+
+            Bind<INavigationService>().ToConstant(navigationService);
         }
 
         private void BindViewModels()

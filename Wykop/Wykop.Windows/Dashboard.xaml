@@ -13,6 +13,15 @@
     <interactivity:Interaction.Behaviors>
         <behaviors:LoadDataOnPageLoadedBehavior/>
     </interactivity:Interaction.Behaviors>
+    
+    <Page.BottomAppBar>
+        <CommandBar IsOpen="True">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Icon="Message" Label="Mikroblog"
+                              Command="{Binding NavigateToMikroblog}"/>
+            </CommandBar.PrimaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
 
     <Hub Background="{StaticResource ApplicationPageBackgroundThemeBrush}" Margin="0 -50 0 0">
         <HubSection Header="Główna" MinWidth="600">
