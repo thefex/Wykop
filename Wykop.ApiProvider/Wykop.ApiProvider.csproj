@@ -102,6 +102,7 @@
     <Compile Include="Login\ILoginService.cs" />
     <Compile Include="Login\LoginResult.cs" />
     <Compile Include="Login\LoginService.cs" />
+    <Compile Include="Login\UserApplicationKeyProvider.cs" />
     <Compile Include="Model\Entry.cs" />
     <Compile Include="Model\JSONDeserializers\Converter\TagsConverter.cs" />
     <Compile Include="Model\JSONDeserializers\Converter\UsersListConverter.cs" />
@@ -124,6 +125,9 @@
     <Folder Include="Data\Profile\" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="HtmlAgilityPack-PCL">
+      <HintPath>..\packages\HtmlAgilityPack-PCL.1.4.6\lib\HtmlAgilityPack-PCL.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Threading.Tasks">
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\portable-net45+win8+wpa81\Microsoft.Threading.Tasks.dll</HintPath>
     </Reference>
