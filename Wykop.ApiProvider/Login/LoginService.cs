@@ -1,12 +1,14 @@
 ﻿using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using RestSharp.Portable;
 using RestSharp.Portable.Deserializers;
 using Wykop.ApiProvider.Common;
 using Wykop.ApiProvider.Common.Constants;
 using Wykop.ApiProvider.Common.Extensions;
 using Wykop.ApiProvider.Data;
+using Wykop.ApiProvider.Model;
 using Wykop.ApiProvider.Model.Internal;
 
 namespace Wykop.ApiProvider.Login
@@ -26,14 +28,14 @@ namespace Wykop.ApiProvider.Login
 
         public async Task<bool> IsLoggedIn()
         {
-            var userKey = await _dataContainer.Retrieve(DataConstants.UserKey);
-
+            var userKey = await _dataContainer.Retrieve(DataConstants.LoggedUserJsonKey);
             return !string.IsNullOrEmpty(userKey);
         }
 
-        public async Task<string> GetLoggedUserKey()
+        public async Task<LoggedUser> GetLoggedUser()
         {
-            return await _dataContainer.Retrieve(DataConstants.UserKey);
+            var loggedUserJson = await _dataContainer.Retrieve(DataConstants.LoggedUserJsonKey);
+            return JsonConvert.DeserializeObject<LoggedUser>(loggedUserJson);
         }
 
         public async Task<LoginResult> SignIn(LoginData loginData, CancellationToken cancellationToken)
@@ -43,9 +45,12 @@ namespace Wykop.ApiProvider.Login
             if (!isApplicationConnected)
                 return LoginResult.InvalidLoginData;
 
+            // TODO: error handling
             var loginRequest = await CreateUserLoginRequest();
-            var response = await _restClient.Execute<UserLogin>(loginRequest, cancellationToken);
-            await _dataContainer.Save(DataConstants.UserKey, response.Data.UserKey);
+            var response = await _restClient.Execute<LoggedUser>(loginRequest, cancellationToken);
+
+            var serializedLoggedUser = JsonConvert.SerializeObject(response.Data);
+            await _dataContainer.Save(DataConstants.LoggedUserJsonKey, serializedLoggedUser);
 
             return LoginResult.Successful;
         }

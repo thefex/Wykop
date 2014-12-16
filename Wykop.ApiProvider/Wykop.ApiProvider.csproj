@@ -108,6 +108,8 @@
     <Compile Include="Model\JSONDeserializers\Converter\TagsConverter.cs" />
     <Compile Include="Model\JSONDeserializers\Converter\UsersListConverter.cs" />
     <Compile Include="Model\JSONDeserializers\CustomLinkDeserializer.cs" />
+    <Compile Include="Model\LoggedUser.cs" />
+    <Compile Include="Model\Profile.cs" />
     <Compile Include="Model\Tag.cs" />
     <Compile Include="Model\Link.cs" />
     <Compile Include="Model\Avatar.cs" />

@@ -122,6 +122,7 @@
     <Compile Include="ViewModel\DashboardViewModel.cs" />
     <Compile Include="ViewModel\Dashboard\HomeDashboardViewModel.cs" />
     <Compile Include="ViewModel\Dashboard\HotDashboardViewModel.cs" />
+    <Compile Include="ViewModel\Dashboard\UserProfileViewModel.cs" />
     <Compile Include="ViewModel\Dashboard\WykopaliskoDashboardViewModel.cs" />
     <Compile Include="ViewModel\LoginPageViewModel.cs" />
     <Compile Include="ViewModel\MirkoBlogViewModel.cs" />
