@@ -16,15 +16,18 @@ namespace Wykop.ViewModel
         public HomeDashboardViewModel Home { get; set; }
         public HotDashboardViewModel Hot { get; set; }
         public WykopaliskoDashboardViewModel Wykopalisko { get; set; }
+        public UserProfileViewModel UserProfile { get; set; }
 
         public RelayCommand NavigateToMikroblog { get; private set; }
 
-        public override async Task Load()
+        public override Task Load()
         {
-            await base.Load();
-            await Home.Load();
-            await Wykopalisko.Load();
-            await Hot.Load();
+            var tasksToExecute = new Task[]
+            {
+                base.Load(), Home.Load(), Wykopalisko.Load(), Hot.Load(), UserProfile.Load()
+            };
+
+            return Task.WhenAll(tasksToExecute);
         }
     }
 }
