@@ -23,23 +23,31 @@
         </CommandBar>
     </Page.BottomAppBar>
 
-    <Hub Background="{StaticResource ApplicationPageBackgroundThemeBrush}" Margin="0 -50 0 0">
-        <HubSection Header="Główna" MinWidth="600">
-            <DataTemplate>
-                <view:DashboardHomeUserControl DataContext="{Binding Home}"/>
-            </DataTemplate>
-        </HubSection>
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
         
-        <HubSection Header="Gorące" MinWidth="300">
-            <DataTemplate>
-                <view:DashboardHotUserControl DataContext="{Binding Hot}"/>
-            </DataTemplate>
-        </HubSection>
+        <view:LoggedUserHeaderControl DataContext="{Binding UserProfile}" VerticalAlignment="Top"
+                                      Visibility="{Binding IsUserLogged, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                      HorizontalAlignment="Right"
+                                      Margin="15"/>
         
-        <HubSection Header="Wykopalisko" MinWidth="300">
-            <DataTemplate>
-                <view:UpcomingDashboardUserControl DataContext="{Binding Wykopalisko}"/>
-            </DataTemplate>
-        </HubSection>
-    </Hub>
+        <Hub Margin="0 -35 0 0">
+            <HubSection Header="Główna" MinWidth="600">
+                <DataTemplate>
+                    <view:DashboardHomeUserControl DataContext="{Binding Home}"/>
+                </DataTemplate>
+            </HubSection>
+
+            <HubSection Header="Gorące" MinWidth="300">
+                <DataTemplate>
+                    <view:DashboardHotUserControl DataContext="{Binding Hot}"/>
+                </DataTemplate>
+            </HubSection>
+
+            <HubSection Header="Wykopalisko" MinWidth="300">
+                <DataTemplate>
+                    <view:UpcomingDashboardUserControl DataContext="{Binding Wykopalisko}"/>
+                </DataTemplate>
+            </HubSection>
+        </Hub>
+    </Grid>
 </Page>

@@ -133,6 +133,9 @@
     <Compile Include="View\DashboardHotUserControl.xaml.cs">
       <DependentUpon>DashboardHotUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\LoggedUserHeaderControl.xaml.cs">
+      <DependentUpon>LoggedUserHeaderControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\TemplateSelector\HomeDashboardDataTemplateSelector.cs" />
     <Compile Include="View\TemplateSelector\HomeDashboardSizedStyleSelector.cs" />
     <Compile Include="View\UpcomingDashboardUserControl.xaml.cs">
@@ -171,6 +174,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\DashboardHotUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LoggedUserHeaderControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

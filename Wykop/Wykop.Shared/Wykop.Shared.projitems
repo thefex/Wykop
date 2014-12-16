@@ -21,6 +21,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Common\SharedNinjectModule.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\WykopApiConfig.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\BaseViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)View\ValueConverters\BooleanToVisibiltiyConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)View\ViewServices.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)View\Resources\SharedResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 </Project>
