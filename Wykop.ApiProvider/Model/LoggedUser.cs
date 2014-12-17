@@ -7,6 +7,12 @@ using Wykop.ApiProvider.DataProviders;
 
 namespace Wykop.ApiProvider.Model
 {
+    internal class NotificationCount
+    {
+        [JsonProperty("count")]
+        public int Count { get; set; }
+    }
+
     public class LoggedUser : Profile
     {
         private readonly DefaultWykopDataProvider _notificationCountProvider;
@@ -28,7 +34,7 @@ namespace Wykop.ApiProvider.Model
         /// <param name="notificationType">Private Messages or HashTags</param>
         /// <param name="cancellationToken">Cancellation Token</param>
         /// <returns>Count of requested notification type.</returns>
-        public Task<int> GetNotificationCount(NotificationType notificationType, CancellationToken cancellationToken)
+        public async Task<int> GetNotificationCount(NotificationType notificationType, CancellationToken cancellationToken)
         {
             MyWykopRequest myWykopRequest;
 
@@ -37,7 +43,11 @@ namespace Wykop.ApiProvider.Model
             else
                 myWykopRequest = new MyWykopHashTagsNotificationsCountRequest(this);
 
-            return _notificationCountProvider.GetData<MyWykopRequest, int>(myWykopRequest, cancellationToken);
+            var notificationCount =
+                await _notificationCountProvider.GetData<MyWykopRequest, NotificationCount>(myWykopRequest, cancellationToken)
+                .ConfigureAwait(false);
+
+            return notificationCount.Count;
         }
     }
 }
