@@ -6,8 +6,7 @@ using Wykop.ApiProvider.Data;
 
 namespace Wykop.ApiProvider.DataProviders
 {
-    public class DefaultWykopDataProvider<TRequest, TResult> : IWykopDataProvider<TRequest, TResult>
-        where TRequest : WykopRequestBase
+    public class DefaultWykopDataProvider : IWykopDataProvider
     {
         private readonly RestClient _restClient;
 
@@ -16,7 +15,8 @@ namespace Wykop.ApiProvider.DataProviders
             _restClient = new RestClient(ApiConstants.HostUrl);
         }
 
-        public async Task<TResult> GetData(TRequest fromRequest, CancellationToken cancellationToken)
+        public async Task<TResult> GetData<TRequest, TResult>(TRequest fromRequest, CancellationToken cancellationToken)
+            where TRequest : WykopRequestBase
         {
             // TODO: Error handling
             var restDataRequest = fromRequest.BuildRestRequest();

@@ -4,9 +4,9 @@ using Wykop.ApiProvider.Data;
 
 namespace Wykop.ApiProvider.DataProviders
 {
-    public interface IWykopDataProvider<in TRequest, TResult>
-        where TRequest : WykopRequestBase
+    public interface IWykopDataProvider
     {
-        Task<TResult> GetData(TRequest fromRequest, CancellationToken cancellationToken);
+        Task<TResult> GetData<TRequest, TResult>(TRequest fromRequest, CancellationToken cancellationToken)
+            where TRequest : WykopRequestBase;
     }
 }
