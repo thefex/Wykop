@@ -9,7 +9,7 @@
     d:DesignHeight="300"
     d:DesignWidth="400" Background="Transparent">
 
-    <StackPanel DataContext="{Binding LoggedUserProfile}" VerticalAlignment="Top" HorizontalAlignment="Stretch"
+    <StackPanel VerticalAlignment="Top" HorizontalAlignment="Stretch"
           Background="Transparent" Orientation="Horizontal">
         <StackPanel.Resources>
             <Style x:Name="DefaultTagStyle" TargetType="TextBlock" BasedOn="{StaticResource TitleTextBlockStyle}">
@@ -19,20 +19,15 @@
         </StackPanel.Resources>
 
         <TextBlock Style="{StaticResource DefaultTagStyle}">
-            <Run Text="#"/>
-            <Run Text="100"></Run>
+            <Run Text="#pm"/>
+            <Run Text="{Binding PrivateMessageNotificationCount}"></Run>
         </TextBlock>
 
         <TextBlock Style="{StaticResource DefaultTagStyle}">
             <Run Text="#"/>
-            <Run Text="100"></Run>
+            <Run Text="{Binding HashTagsNotificationCount}"></Run>
         </TextBlock>
 
-        <TextBlock Style="{StaticResource DefaultTagStyle}">
-            <Run Text="#"/>
-            <Run Text="100"></Run>
-        </TextBlock>
-
-        <Image Source="{Binding DefaultAvatar}" Stretch="None" Margin="15 0 0 0"/>
+        <Image DataContext="{Binding LoggedUserProfile}" Source="{Binding DefaultAvatar}" Stretch="None" Margin="15 0 0 0"/>
     </StackPanel>
 </UserControl>

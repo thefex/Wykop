@@ -1,4 +1,6 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.Xaml.Interactivity;
+using Wykop.ApiProvider.Data.Types;
 using Wykop.ApiProvider.Login;
 using Wykop.ApiProvider.Model;
 using Wykop.View;
@@ -15,7 +17,10 @@ namespace Wykop.ViewModel.Dashboard
         }
 
         public bool IsUserLogged { get; set; }
-        public Profile LoggedUserProfile { get; set; }
+        public LoggedUser LoggedUserProfile { get; set; }
+
+        public int HashTagsNotificationCount { get; set; }
+        public int PrivateMessageNotificationCount { get; set; }
 
         public override async Task Load()
         {
@@ -23,7 +28,14 @@ namespace Wykop.ViewModel.Dashboard
 
             IsUserLogged = await _loginService.IsLoggedIn();
             if (IsUserLogged)
+            {
                 LoggedUserProfile = await _loginService.GetLoggedUser();
+                HashTagsNotificationCount = 
+                    await LoggedUserProfile.GetNotificationCount(NotificationType.HashTag, CurrentCancellationToken);
+                PrivateMessageNotificationCount =
+                    await
+                        LoggedUserProfile.GetNotificationCount(NotificationType.PrivateMessage, CurrentCancellationToken);
+            }
         }
     }
 }
