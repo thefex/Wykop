@@ -28,7 +28,7 @@ namespace Wykop.ApiProvider.Login
 
         public async Task<bool> IsLoggedIn()
         {
-            var userKey = await _dataContainer.Retrieve(DataConstants.LoggedUserJsonKey);
+            var userKey = await _dataContainer.Retrieve(DataConstants.LoggedUserJsonKey).ConfigureAwait(false);
             return !string.IsNullOrEmpty(userKey);
         }
 
@@ -47,10 +47,10 @@ namespace Wykop.ApiProvider.Login
 
             // TODO: error handling
             var loginRequest = await CreateUserLoginRequest();
-            var response = await _restClient.Execute<LoggedUser>(loginRequest, cancellationToken);
+            var response = await _restClient.Execute<LoggedUser>(loginRequest, cancellationToken).ConfigureAwait(false);
 
             var serializedLoggedUser = JsonConvert.SerializeObject(response.Data);
-            await _dataContainer.Save(DataConstants.LoggedUserJsonKey, serializedLoggedUser);
+            await _dataContainer.Save(DataConstants.LoggedUserJsonKey, serializedLoggedUser).ConfigureAwait(false);
 
             return LoginResult.Successful;
         }

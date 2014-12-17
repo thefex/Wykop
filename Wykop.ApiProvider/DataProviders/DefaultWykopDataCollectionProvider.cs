@@ -21,7 +21,7 @@ namespace Wykop.ApiProvider.DataProviders
             CancellationToken cancellationToken)
         {
             var restDataRequest = fromRequest.BuildRestRequest();
-            var requestResults = await _restClient.Execute<List<TResult>>(restDataRequest, cancellationToken);
+            var requestResults = await _restClient.Execute<List<TResult>>(restDataRequest, cancellationToken).ConfigureAwait(false);
 
             return requestResults.Data;
         }
