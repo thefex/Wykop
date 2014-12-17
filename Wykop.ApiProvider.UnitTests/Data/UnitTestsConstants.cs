@@ -4,6 +4,7 @@
     {
         public static readonly string AppKey = "testAppKey";
         public static readonly string ApiSecret = "testApiSecret";
+        public static readonly string AppName = "UnitTests";
         public static readonly string WykopHostUrl = "http://a.wykop.pl/";
     }
 }

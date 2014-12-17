@@ -11,6 +11,7 @@ namespace Wykop.ApiProvider.UnitTests.Data
         {
             WykopApiConfiguration.SetApiKey(UnitTestsConstants.AppKey);
             WykopApiConfiguration.SetApiSecret(UnitTestsConstants.ApiSecret);
+            WykopApiConfiguration.SetApplicationName(UnitTestsConstants.AppName);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Wykop.ApiProvider.Common.Extensions
         public static void SignWykopRequest(this RestRequest request)
         {
             if (!WykopApiConfiguration.IsConfigured())
-                throw new NotConfiguredApiException("You need to call WykopApiConfiguration.SetApiKey and secret");
+                throw new NotConfiguredApiException("You need to call WykopApiConfiguration.SetApiKey, secret and application name");
 
             string postParameterString = request.GetPostParametersStringSepareted();
             
