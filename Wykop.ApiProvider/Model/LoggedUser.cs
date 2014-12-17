@@ -20,6 +20,14 @@ namespace Wykop.ApiProvider.Model
         [JsonProperty("userkey")]
         public string UserKey { get; internal set; }
 
+
+        /// <summary>
+        /// Gets notification count according to passed notificationtype by sending request to WykopApi.
+        /// Returned value is always actual (not cached one).
+        /// </summary>
+        /// <param name="notificationType">Private Messages or HashTags</param>
+        /// <param name="cancellationToken">Cancellation Token</param>
+        /// <returns>Count of requested notification type.</returns>
         public Task<int> GetNotificationCount(NotificationType notificationType, CancellationToken cancellationToken)
         {
             MyWykopRequest myWykopRequest;
