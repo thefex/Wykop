@@ -84,6 +84,9 @@
     <Compile Include="Data\Link\User\UserLinksRequest.cs" />
     <Compile Include="Data\LoginData.cs" />
     <Compile Include="Data\Link\Links\MainLinksRequest.cs" />
+    <Compile Include="Data\MyWykop\MyWykopHashTagsNotificationsCountRequest.cs" />
+    <Compile Include="Data\MyWykop\MyWykopNotificationsCountRequest.cs" />
+    <Compile Include="Data\MyWykop\MyWykopRequest.cs" />
     <Compile Include="Data\Types\SortType.cs" />
     <Compile Include="Data\WykopRequestBase.cs" />
     <Compile Include="Exceptions\ApiExceptions\ApiErrorCode.cs" />
@@ -123,7 +126,6 @@
   <ItemGroup>
     <Folder Include="Data\Dig\" />
     <Folder Include="Data\EntryComment\" />
-    <Folder Include="Data\MyWykop\" />
     <Folder Include="Data\Notification\" />
     <Folder Include="Data\Profile\" />
   </ItemGroup>
