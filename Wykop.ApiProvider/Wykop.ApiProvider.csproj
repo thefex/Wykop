@@ -50,7 +50,9 @@
     <Compile Include="Common\WykopApiConfiguration.cs" />
     <Compile Include="Common\Constants\DataConstants.cs" />
     <Compile Include="DataProviders\DefaultWykopDataCollectionProvider.cs" />
+    <Compile Include="DataProviders\DefaultWykopDataProvider.cs" />
     <Compile Include="DataProviders\IWykopDataCollectionProvider.cs" />
+    <Compile Include="DataProviders\IWykopDataProvider.cs" />
     <Compile Include="Data\ApiParameter.cs" />
     <Compile Include="Data\Entry\EntriesRequest.cs" />
     <Compile Include="Data\Entry\Stream\StreamEntriesRequest.cs" />
@@ -87,6 +89,7 @@
     <Compile Include="Data\MyWykop\MyWykopHashTagsNotificationsCountRequest.cs" />
     <Compile Include="Data\MyWykop\MyWykopNotificationsCountRequest.cs" />
     <Compile Include="Data\MyWykop\MyWykopRequest.cs" />
+    <Compile Include="Data\Types\NotificationType.cs" />
     <Compile Include="Data\Types\SortType.cs" />
     <Compile Include="Data\WykopRequestBase.cs" />
     <Compile Include="Exceptions\ApiExceptions\ApiErrorCode.cs" />
