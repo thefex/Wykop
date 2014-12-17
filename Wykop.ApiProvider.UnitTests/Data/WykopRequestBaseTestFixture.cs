@@ -9,7 +9,7 @@ using Wykop.ApiProvider.Data.LinkRequest;
 namespace Wykop.ApiProvider.UnitTests.Data
 {
     [TestFixture]
-    public class WykopRequestBaseTestFixture
+    public abstract class WykopRequestBaseTestFixture
     {
         protected RestClient RestClient { get; private set; }
         protected WykopRequestBase WykopRequest { get; set; }
