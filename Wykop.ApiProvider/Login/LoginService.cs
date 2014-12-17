@@ -3,13 +3,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using RestSharp.Portable;
-using RestSharp.Portable.Deserializers;
 using Wykop.ApiProvider.Common;
 using Wykop.ApiProvider.Common.Constants;
 using Wykop.ApiProvider.Common.Extensions;
 using Wykop.ApiProvider.Data;
 using Wykop.ApiProvider.Model;
-using Wykop.ApiProvider.Model.Internal;
 
 namespace Wykop.ApiProvider.Login
 {
