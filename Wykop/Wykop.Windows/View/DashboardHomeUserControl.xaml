@@ -69,7 +69,8 @@
 
     <GridView ItemsSource="{Binding HomeLinks}"  
               ItemTemplateSelector="{StaticResource HomeDashboardDataTemplateSelector}"
-              ItemContainerStyleSelector="{StaticResource HomeDashboardSizedStyleSelector}">
+              ItemContainerStyleSelector="{StaticResource HomeDashboardSizedStyleSelector}"
+              SelectionMode="None">
         <GridView.ItemsPanel>
             <ItemsPanelTemplate>
                 <VariableSizedWrapGrid Orientation="Vertical" ItemWidth="288" ItemHeight="50"/>
