@@ -4,5 +4,6 @@
     xmlns:local="using:Wykop.View.Resources">
 
     <SolidColorBrush Color="#000000" x:Key="ApplicationBackgroundSolidColorBrush"/>
+    <SolidColorBrush Color="#202020" x:Key="ApplicationBarSolidColorBrush"/>
 
 </ResourceDictionary>

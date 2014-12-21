@@ -16,7 +16,7 @@
     </interactivity:Interaction.Behaviors>
     
     <Page.BottomAppBar>
-        <CommandBar IsOpen="True">
+        <CommandBar Background="{ThemeResource ApplicationBarSolidColorBrush}">
             <CommandBar.PrimaryCommands>
                 <AppBarButton Icon="Message" Label="Mikroblog"
                               Command="{Binding NavigateToMikroblog}"/>
