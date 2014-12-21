@@ -9,7 +9,8 @@
     xmlns:behaviors="using:Wykop.Common.Behaviors"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     mc:Ignorable="d"
-    DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=Dashboard}">
+    DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=Dashboard}"
+    Background="{ThemeResource ApplicationBackgroundSolidColorBrush}">
     <interactivity:Interaction.Behaviors>
         <behaviors:LoadDataOnPageLoadedBehavior/>
     </interactivity:Interaction.Behaviors>
@@ -23,7 +24,7 @@
         </CommandBar>
     </Page.BottomAppBar>
 
-    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource ApplicationBackgroundSolidColorBrush}">
         
         <view:LoggedUserHeaderControl DataContext="{Binding UserProfile}" VerticalAlignment="Top"
                                       Visibility="{Binding IsUserLogged, Converter={StaticResource BooleanToVisibilityConverter}}"

@@ -9,7 +9,8 @@
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     xmlns:media="using:Microsoft.Xaml.Interactions.Media"
     mc:Ignorable="d"
-    DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=Login}">
+    DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=Login}"
+    Background="{ThemeResource ApplicationBackgroundSolidColorBrush}">
     
     <Page.Resources>
         <Style x:Key="LoginTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource SubheaderTextBlockStyle}">
@@ -81,7 +82,7 @@
         </Storyboard>
     </Page.Resources>
 
-    <Grid Background="{StaticResource ApplicationBackgroundSolidColorBrush}">
+    <Grid Background="{ThemeResource ApplicationBackgroundSolidColorBrush}">
         <interactivity:Interaction.Behaviors>
             <core:EventTriggerBehavior EventName="Loaded">
                 <media:ControlStoryboardAction ControlStoryboardOption="Play" 

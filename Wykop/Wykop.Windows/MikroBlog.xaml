@@ -10,12 +10,13 @@
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:behaviors="using:Wykop.Common.Behaviors"
     mc:Ignorable="d"
-    DataContext="{Binding MikroBlog, Source={StaticResource ViewModelLocator}}">
+    DataContext="{Binding MikroBlog, Source={StaticResource ViewModelLocator}}"
+    Background="{ThemeResource ApplicationBackgroundSolidColorBrush}">
     <interactivity:Interaction.Behaviors>
         <behaviors:LoadDataOnPageLoadedBehavior/>
     </interactivity:Interaction.Behaviors>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource ApplicationBackgroundSolidColorBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
