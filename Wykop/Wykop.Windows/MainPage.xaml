@@ -5,34 +5,123 @@
     xmlns:local="using:Wykop"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:media="using:Microsoft.Xaml.Interactions.Media"
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=Login}">
+    
+    <Page.Resources>
+        <Style x:Key="LoginTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource SubheaderTextBlockStyle}">
+            <Setter Property="Foreground" Value="DimGray"/>
+            <Setter Property="Opacity" Value="0"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <TranslateTransform X="25"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="4*"/>
-        </Grid.RowDefinitions>
-        <TextBlock Text="Login" Style="{StaticResource HeaderTextBlockStyle}" HorizontalAlignment="Center" 
-                   VerticalAlignment="Center"></TextBlock>
+        <Style x:Key="LoginTextBoxStyle" TargetType="FrameworkElement">
+            <Setter Property="Width" Value="390"/>
+            <Setter Property="Margin" Value="0 20 0 0"/>
+            <Setter Property="Opacity" Value="0"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <TranslateTransform X="25"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
         
-        <StackPanel Orientation="Vertical" Grid.Row="1">
-            <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Center" VerticalAlignment="Top">
-                <TextBlock Text="Nazwa użytkownika:" Style="{StaticResource SubheaderTextBlockStyle}"/>
-                <TextBox Width="200" Margin="10 0 0 0" Text="{Binding LoginName, Mode=TwoWay}"></TextBox>
-            </StackPanel>
+        <Storyboard x:Key="OnLoadedAnimationStoryboard">
+            <DoubleAnimation BeginTime="0:0:0" To="-282" Storyboard.TargetName="MirkoLogoImage"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                             Duration="0:0:0.55">
+                <DoubleAnimation.EasingFunction>
+                    <BackEase EasingMode="EaseInOut" Amplitude="1.5"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="LoginPanelContainer"
+                                           Storyboard.TargetProperty="IsHitTestVisible" BeginTime="0:0:0.6">
+                <DiscreteObjectKeyFrame Value="True" KeyTime="0"/>
+            </ObjectAnimationUsingKeyFrames>
+                        
+            <DoubleAnimation BeginTime="0:0:0.7" Storyboard.TargetName="LoginButtonsContainer"
+                             Storyboard.TargetProperty="Opacity"
+                             To="1" Duration="0:0:0.15"/>
+            
+            <!-- textblocks animations -->
+            <DoubleAnimation BeginTime="0:0:0.6" Storyboard.TargetName="LoginTextBlock"
+                             Storyboard.TargetProperty="Opacity"
+                             To="1" Duration="0:0:0.15"/>
+            <DoubleAnimation BeginTime="0:0:0.6" Storyboard.TargetName="PasswordTextBlock"
+                             Storyboard.TargetProperty="Opacity"
+                             To="1" Duration="0:0:0.15"/>
+            <DoubleAnimation BeginTime="0:0:0.6" Storyboard.TargetName="LoginTextBlock"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                             To="0" Duration="0:0:0.2"/>
+            <DoubleAnimation BeginTime="0:0:0.6" Storyboard.TargetName="PasswordTextBlock"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                             To="0" Duration="0:0:0.2"/>
+            
+            <!-- textbox animation -->
+            <DoubleAnimation BeginTime="0:0:0.4" Storyboard.TargetName="LoginTextBox"
+                             Storyboard.TargetProperty="Opacity"
+                             To="1" Duration="0:0:0.15"/>
+            <DoubleAnimation BeginTime="0:0:0.4" Storyboard.TargetName="PasswordTextBox"
+                             Storyboard.TargetProperty="Opacity"
+                             To="1" Duration="0:0:0.15"/>
+            <DoubleAnimation BeginTime="0:0:0.4" Storyboard.TargetName="LoginTextBox"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                             To="0" Duration="0:0:0.35"/>
+            <DoubleAnimation BeginTime="0:0:0.4" Storyboard.TargetName="PasswordTextBox"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                             To="0" Duration="0:0:0.35"/>
+        </Storyboard>
+    </Page.Resources>
 
-            <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 20 0 0">
-                <TextBlock Text="Hasło:" Style="{StaticResource SubheaderTextBlockStyle}"/>
-                <PasswordBox Width="200" Margin="10 0 0 0" Password="{Binding Password, Mode=TwoWay}"></PasswordBox>
+    <Grid Background="{StaticResource ApplicationBackgroundSolidColorBrush}">
+        <interactivity:Interaction.Behaviors>
+            <core:EventTriggerBehavior EventName="Loaded">
+                <media:ControlStoryboardAction ControlStoryboardOption="Play" 
+                                               Storyboard="{StaticResource OnLoadedAnimationStoryboard}"/>
+            </core:EventTriggerBehavior>
+        </interactivity:Interaction.Behaviors>
+        
+        <!-- HACK! preventing ugly textbox login autofocus... -->
+        <TextBox Height="10" Width="10" VerticalAlignment="Top" IsHitTestVisible="False" Opacity="0"/>
+
+        <Image Name="MirkoLogoImage" Source="Assets/App/MirkoLoginLogo.png" Stretch="None"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center" Grid.ColumnSpan="2">
+            <Image.RenderTransform>
+                <TranslateTransform X="0"/>
+            </Image.RenderTransform>
+        </Image>
+        
+        <StackPanel Name="LoginPanelContainer"
+                    Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    IsHitTestVisible="False">
+            <StackPanel.RenderTransform>
+                <TranslateTransform X="0" Y="45"></TranslateTransform>
+            </StackPanel.RenderTransform>
+            
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                <TextBlock Name="LoginTextBlock" Text="Login" Style="{StaticResource LoginTextBlockStyle}"/>
+                <TextBox Name="LoginTextBox" Text="{Binding LoginName, Mode=TwoWay}" Style="{StaticResource LoginTextBoxStyle}"/>
             </StackPanel>
             
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button FontSize="25" HorizontalAlignment="Center" Margin="0 20 0 0"
-                        Command="{Binding SkipLoginCommand}">Bez logowania</Button>
-                <Button FontSize="25" HorizontalAlignment="Center" Margin="0 20 0 0">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="0 15 0 0">
+                <TextBlock Name="PasswordTextBlock" Text="Hasło" Style="{StaticResource LoginTextBlockStyle}"/>
+                <PasswordBox Name="PasswordTextBox" Password="{Binding Password, Mode=TwoWay}" Style="{StaticResource LoginTextBoxStyle}"
+                             IsPasswordRevealButtonEnabled="True"/>
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal"
+                        Margin="0 30 0 0" Name="LoginButtonsContainer"
+                        Opacity="0">                
+                <Button Background="White" Foreground="Black" FontSize="25" BorderBrush="White" BorderThickness="1">
                     <Button.Flyout>
                         <Flyout Placement="Full" >
                             <Grid>
@@ -40,15 +129,16 @@
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
-                                
+
                                 <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" FontSize="40" Foreground="Black">
                                     Aplikacja wymaga:
                                 </TextBlock>
                                 <StackPanel Grid.Row="1">
                                     <TextBlock Text="tu uprawnienia" Style="{StaticResource SubheaderTextBlockStyle}"
                                                Margin="20"></TextBlock>
+                                    <TextBlock Style="{StaticResource SubheaderTextBlockStyle}">rozrysuj to jak możesz ;)</TextBlock>
                                 </StackPanel>
-                                
+
                                 <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.RowSpan="2"
                                         Command="{Binding LoginCommand}">
                                     Zgadzam się
@@ -58,8 +148,15 @@
                     </Button.Flyout>
                     Zaloguj
                 </Button>
+                <Button Style="{StaticResource TextBlockButtonStyle}" Margin="10 0 0 0"
+                        Foreground="DimGray" Command="{Binding SkipLoginCommand}">
+                    <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" FontSize="22" Margin="0" OpticalMarginAlignment="0">
+                        <Underline>
+                            Przeglądaj bez zalogowania
+                        </Underline>    
+                    </TextBlock>
+                </Button>
             </StackPanel>
-            
         </StackPanel>
     </Grid>
 </Page>
