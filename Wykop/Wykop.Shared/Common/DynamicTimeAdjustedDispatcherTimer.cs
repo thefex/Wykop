@@ -58,11 +58,13 @@ namespace Wykop.Common
         public void IncreaseTickLength()
         {
             _dynamicTimeAdjuster.IncreaseTime();
+            _dispatcherTimer.Interval = _dynamicTimeAdjuster.CurrentTime;
         }
 
         public void DecreaseTickLength()
         {
             _dynamicTimeAdjuster.DecreaseTime();
+            _dispatcherTimer.Interval = _dynamicTimeAdjuster.CurrentTime;
         }
     }
 }
