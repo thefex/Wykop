@@ -1,26 +1,32 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls.Primitives;
 
 namespace Wykop.Common
 {
     public class DynamicTimeAdjustedDispatcherTimer : IDisposable
     {
-        private readonly TimeInterval _tickInterval;
-        private readonly Func<Task> _onTick;
-        private readonly DispatcherTimer _dispatcherTimer;
         private bool isTickProcessing;
+        private readonly DispatcherTimer _dispatcherTimer;
+        private readonly DynamicTimeAdjuster _dynamicTimeAdjuster;
+        private readonly Func<Task> _onTick;
 
         public DynamicTimeAdjustedDispatcherTimer(TimeInterval tickInterval, Func<Task> onTick)
         {
-            _tickInterval = tickInterval;
+            _dynamicTimeAdjuster = new DynamicTimeAdjuster(tickInterval);
+
             _onTick = onTick;
-            _dispatcherTimer = new DispatcherTimer()
+            _dispatcherTimer = new DispatcherTimer
             {
-                Interval = _tickInterval.GetIntervalMiddle()
+                Interval = _dynamicTimeAdjuster.CurrentTime
             };
             _dispatcherTimer.Tick += DispatcherTimerOnTick;
+        }
+
+        public void Dispose()
+        {
+            _dispatcherTimer.Stop();
+            _dispatcherTimer.Tick -= DispatcherTimerOnTick;
         }
 
         private async void DispatcherTimerOnTick(object sender, object o)
@@ -51,23 +57,12 @@ namespace Wykop.Common
 
         public void IncreaseTickLength()
         {
-            
+            _dynamicTimeAdjuster.IncreaseTime();
         }
 
         public void DecreaseTickLength()
         {
-            double decreaseBy = _tickInterval.GetIntervalLengthInMiliseconds()/2.0;
-            double newTickLength = Math.Max(
-                _tickInterval.Minimum.TotalMilliseconds,
-                _dispatcherTimer.Interval.TotalMilliseconds - decreaseBy);
-
-            _dispatcherTimer.Interval = TimeSpan.FromMilliseconds(newTickLength);
-        }
-
-        public void Dispose()
-        {
-            _dispatcherTimer.Stop();
-            _dispatcherTimer.Tick -= DispatcherTimerOnTick;
+            _dynamicTimeAdjuster.DecreaseTime();
         }
     }
 }

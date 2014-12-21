@@ -9,12 +9,13 @@ namespace Wykop.Windows.UnitTests.Shared.Common
         readonly TimeInterval mockedTimeInterval = new TimeInterval(20, 120);
         readonly int timeIntervalCenterInMs = 70; // (120-20)/2 + 20
         private readonly double exponentBase = 2.0;
+        private readonly double increaseByValue = 5.0;
         private DynamicTimeAdjuster systemUnderTest;
 
         [SetUp]
         public void SetupTests()
         {
-            systemUnderTest = new DynamicTimeAdjuster(mockedTimeInterval);
+            systemUnderTest = new DynamicTimeAdjuster(mockedTimeInterval, 2d, increaseByValue);
         }
 
         [Test]

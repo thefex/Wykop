@@ -8,17 +8,19 @@ namespace Wykop.Common
     {
         private readonly double _increaseByExponentBase;
         private readonly TimeInterval _timeInterval;
-        private const double StartIncreasingByValue = 5.0;
+        private readonly double _startIncreasingByValue;
 
-        private double currentlyIncreasingBy = StartIncreasingByValue;
+        private double currentlyIncreasingBy;
 
-        public DynamicTimeAdjuster(TimeInterval timeInterval, double increaseByExponentBase = 2.0)
+        public DynamicTimeAdjuster(TimeInterval timeInterval, double increaseByExponentBase = 2.0, double startIncreaseByValueInMs = 5000.0)
         {
             Contract.Assert(increaseByExponentBase > 1.0,
                 "It's increasing exponent base, it needs to be bigger than 1.0.");
 
             _timeInterval = timeInterval;
             _increaseByExponentBase = increaseByExponentBase;
+            _startIncreasingByValue = startIncreaseByValueInMs;
+            currentlyIncreasingBy = startIncreaseByValueInMs;
 
             CurrentTime = _timeInterval.GetIntervalMiddle();
         }
@@ -37,7 +39,7 @@ namespace Wykop.Common
 
         private void ResetIncreaseByValue()
         {
-            currentlyIncreasingBy = StartIncreasingByValue;
+            currentlyIncreasingBy = _startIncreasingByValue;
         }
 
         public void IncreaseTime()
