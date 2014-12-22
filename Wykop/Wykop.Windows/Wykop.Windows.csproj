@@ -128,6 +128,10 @@
     <Compile Include="ViewModel\LoginPageViewModel.cs" />
     <Compile Include="ViewModel\MirkoBlogViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="View\Charms\SettingsCharmConfig.cs" />
+    <Compile Include="View\Charms\SettingsCharmUserControl.xaml.cs">
+      <DependentUpon>SettingsCharmUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DashboardHomeUserControl.xaml.cs">
       <DependentUpon>DashboardHomeUserControl.xaml</DependentUpon>
     </Compile>
@@ -174,6 +178,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="MikroBlog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Charms\SettingsCharmUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

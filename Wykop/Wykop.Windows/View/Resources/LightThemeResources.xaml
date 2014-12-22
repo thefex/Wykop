@@ -6,4 +6,8 @@
     <SolidColorBrush Color="#ffffff" x:Key="ApplicationBackgroundSolidColorBrush"/>
     <SolidColorBrush Color="Black" x:Key="ApplicationBarSolidColorBrush"/>
 
+    <SolidColorBrush Color="Yellow" x:Key="ApplicationSettingsCharmHeaderBackgroundSolidColorBrush"/>
+    <SolidColorBrush Color="White" x:Key="ApplicationSettingsCharmBackgroundSolidColorBrush"/>
+    <SolidColorBrush Color="Black" x:Key="ApplicationSettingsCharmForegroundSolidColorBrush"/>
+
 </ResourceDictionary>

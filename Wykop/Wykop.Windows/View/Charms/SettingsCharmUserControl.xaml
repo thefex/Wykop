@@ -1,0 +1,41 @@
+﻿<UserControl
+    x:Class="Wykop.View.Charms.SettingsCharmUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Wykop.View.Charms"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400" Foreground="{ThemeResource ApplicationSettingsCharmForegroundSolidColorBrush}">
+    <UserControl.Transitions>
+        <TransitionCollection>
+            <EdgeUIThemeTransition Edge="Right"/>
+        </TransitionCollection>
+    </UserControl.Transitions>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="{ThemeResource ApplicationSettingsCharmHeaderBackgroundSolidColorBrush}">
+            <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" 
+                       Margin="25 20 10 10">
+                Ustawienia aplikacji
+            </TextBlock>
+        </Grid>
+
+        <StackPanel Orientation="Vertical" Grid.Row="1" Background="{ThemeResource ApplicationSettingsCharmBackgroundSolidColorBrush}">
+            <ToggleSwitch Header="Tryb dzienny" Foreground="Black" Margin="20,20,0,20">
+                <ToggleSwitch.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding ''}" Foreground="{ThemeResource ApplicationSettingsCharmForegroundSolidColorBrush}"
+                    		Style="{StaticResource SubheaderTextBlockStyle}" FontSize="25"/>
+                    </DataTemplate>
+                </ToggleSwitch.HeaderTemplate>
+            </ToggleSwitch>
+        </StackPanel>
+    </Grid>
+</UserControl>

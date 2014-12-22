@@ -6,4 +6,8 @@
     <SolidColorBrush Color="#000000" x:Key="ApplicationBackgroundSolidColorBrush"/>
     <SolidColorBrush Color="#202020" x:Key="ApplicationBarSolidColorBrush"/>
 
+    <SolidColorBrush Color="Orange" x:Key="ApplicationSettingsCharmHeaderBackgroundSolidColorBrush"/>
+    <SolidColorBrush Color="White" x:Key="ApplicationSettingsCharmBackgroundSolidColorBrush"/>
+    <SolidColorBrush Color="Black" x:Key="ApplicationSettingsCharmForegroundSolidColorBrush"/>
+
 </ResourceDictionary>

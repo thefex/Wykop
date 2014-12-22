@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 using Wykop.Common;
+using Wykop.View.Charms;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 
@@ -57,6 +58,10 @@ namespace Wykop
                 this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
+#if WINDOWS_APP
+            new SettingsCharmConfig().SetupSettingsCharm();
+#endif
+
 
             Frame rootFrame = Window.Current.Content as Frame;
 
