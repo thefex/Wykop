@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
+using Wykop.Common.Strings;
 using Wykop.ViewModel;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -27,9 +28,20 @@ namespace Wykop
         public MainPage()
         {
             this.InitializeComponent();
+            MirkoLogoImage.Source = App.ImageApplicationCache.GetImage(ImagesPath.WykopLogoUri);
         }
 
-        private void MirkoLogoImage_OnImageOpened(object sender, RoutedEventArgs e)
+        private void AcceptButton_Click(object sender, RoutedEventArgs e)
+        {
+            acceptFlyout.Hide();
+        }
+
+        private void MirkoLogoImage_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            SetupLogoAnimationOnPageLeave(sender);
+        }
+
+        private void SetupLogoAnimationOnPageLeave(object sender)
         {
             const double wykopHeaderMarginLeft = 45;
             const double wykopHeaderMarginTop = 25;
@@ -44,18 +56,13 @@ namespace Wykop
             Point imagePosition = imageSender.TransformToVisual(this).TransformPoint(new Point(0, 0));
             Rect windowBounds = Window.Current.Bounds;
 
-            renderTransformAnimations[0].To = -imagePosition.X+wykopHeaderMarginLeft;
-            renderTransformAnimations[1].To = -imagePosition.Y+wykopHeaderMarginTop;
+            renderTransformAnimations[0].To = -imagePosition.X + wykopHeaderMarginLeft;
+            renderTransformAnimations[1].To = -imagePosition.Y + wykopHeaderMarginTop;
         }
 
         private void OnPageLeaveStoryboard_OnCompleted(object sender, object e)
         {
             (this.DataContext as LoginPageViewModel).TransferToDashboardCommand.Execute(null);
-        }
-
-        private void AcceptButton_Click(object sender, RoutedEventArgs e)
-        {
-            acceptFlyout.Hide();
         }
     }
 }

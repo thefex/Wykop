@@ -130,9 +130,9 @@
         <!-- HACK! preventing ugly textbox login autofocus... -->
         <TextBox Height="10" Width="10" VerticalAlignment="Top" IsHitTestVisible="False" Opacity="0" PreventKeyboardDisplayOnProgrammaticFocus="True"/>
 
-        <Image Name="MirkoLogoImage" Source="Assets/App/MirkoLoginLogo.png" Stretch="None"
+        <Image Name="MirkoLogoImage" Loaded="MirkoLogoImage_OnLoaded" Stretch="None"
                HorizontalAlignment="Center"
-               VerticalAlignment="Center" Grid.ColumnSpan="2" ImageOpened="MirkoLogoImage_OnImageOpened">
+               VerticalAlignment="Center" Grid.ColumnSpan="2">
             <Image.RenderTransform>
                 <CompositeTransform ScaleY="1" ScaleX="1" TranslateX="0" TranslateY="0"/>
                 

@@ -14,7 +14,7 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Image Source="/Assets/App/MirkoLoginLogo.png" Stretch="None">
+        <Image Name="MirkoLogo" Stretch="None">
             <Image.RenderTransform>
                 <ScaleTransform ScaleX="0.5" ScaleY="0.5"></ScaleTransform>
             </Image.RenderTransform>

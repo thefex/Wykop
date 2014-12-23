@@ -16,6 +16,8 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 using Wykop.Common;
+using Wykop.Common.Cache;
+using Wykop.Common.Strings;
 using Wykop.View.Charms;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
@@ -28,6 +30,7 @@ namespace Wykop
     public sealed partial class App : Application
     {
         private readonly WykopApiConfig apiConfig = new WykopApiConfig();
+        public static readonly BitmapImageApplicationCache ImageApplicationCache = new BitmapImageApplicationCache();
 
 #if WINDOWS_PHONE_APP
         private TransitionCollection transitions;
@@ -50,7 +53,7 @@ namespace Wykop
         /// search results, and so forth.
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
@@ -60,6 +63,7 @@ namespace Wykop
 #endif
 #if WINDOWS_APP
             new SettingsCharmConfig().SetupSettingsCharm();
+            await ImageApplicationCache.AddImageToCache(ImagesPath.WykopLogoUri);
 #endif
 
 
