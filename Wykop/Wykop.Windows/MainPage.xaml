@@ -10,8 +10,8 @@
     xmlns:media="using:Microsoft.Xaml.Interactions.Media"
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=Login}"
-    Background="{ThemeResource ApplicationBackgroundSolidColorBrush}">
-    
+    Background="{ThemeResource ApplicationBackgroundSolidColorBrush}"
+    Name="pageRoot">
     <Page.Resources>
         <Style x:Key="LoginTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource SubheaderTextBlockStyle}">
             <Setter Property="Foreground" Value="DimGray"/>
@@ -22,7 +22,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
+       
         <Style x:Key="LoginTextBoxStyle" TargetType="FrameworkElement">
             <Setter Property="Width" Value="390"/>
             <Setter Property="Margin" Value="0 20 0 0"/>
@@ -34,10 +34,10 @@
             </Setter>
         </Style>
         
-        <Storyboard x:Key="OnLoadedAnimationStoryboard">
+        <Storyboard x:Key="OnLoadedAnimationStoryboard" BeginTime="0:0:0.4">
             <DoubleAnimation BeginTime="0:0:0" To="-282" Storyboard.TargetName="MirkoLogoImage"
                              Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
-                             Duration="0:0:0.55">
+                             Duration="0:0:0.75">
                 <DoubleAnimation.EasingFunction>
                     <BackEase EasingMode="EaseInOut" Amplitude="1.5"/>
                 </DoubleAnimation.EasingFunction>
@@ -48,37 +48,56 @@
                 <DiscreteObjectKeyFrame Value="True" KeyTime="0"/>
             </ObjectAnimationUsingKeyFrames>
                         
-            <DoubleAnimation BeginTime="0:0:0.7" Storyboard.TargetName="LoginButtonsContainer"
+            <DoubleAnimation BeginTime="0:0:0.9" Storyboard.TargetName="LoginButtonsContainer"
                              Storyboard.TargetProperty="Opacity"
-                             To="1" Duration="0:0:0.15"/>
+                             To="1" Duration="0:0:0.25"/>
             
             <!-- textblocks animations -->
-            <DoubleAnimation BeginTime="0:0:0.6" Storyboard.TargetName="LoginTextBlock"
+            <DoubleAnimation BeginTime="0:0:0.8" Storyboard.TargetName="LoginTextBlock"
                              Storyboard.TargetProperty="Opacity"
-                             To="1" Duration="0:0:0.15"/>
-            <DoubleAnimation BeginTime="0:0:0.6" Storyboard.TargetName="PasswordTextBlock"
+                             To="1" Duration="0:0:0.25"/>
+            <DoubleAnimation BeginTime="0:0:0.8" Storyboard.TargetName="PasswordTextBlock"
                              Storyboard.TargetProperty="Opacity"
-                             To="1" Duration="0:0:0.15"/>
-            <DoubleAnimation BeginTime="0:0:0.6" Storyboard.TargetName="LoginTextBlock"
+                             To="1" Duration="0:0:0.25"/>
+            <DoubleAnimation BeginTime="0:0:0.8" Storyboard.TargetName="LoginTextBlock"
                              Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
-                             To="0" Duration="0:0:0.2"/>
-            <DoubleAnimation BeginTime="0:0:0.6" Storyboard.TargetName="PasswordTextBlock"
+                             To="0" Duration="0:0:0.3"/>
+            <DoubleAnimation BeginTime="0:0:0.8" Storyboard.TargetName="PasswordTextBlock"
                              Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
-                             To="0" Duration="0:0:0.2"/>
+                             To="0" Duration="0:0:0.3"/>
             
             <!-- textbox animation -->
-            <DoubleAnimation BeginTime="0:0:0.4" Storyboard.TargetName="LoginTextBox"
+            <DoubleAnimation BeginTime="0:0:0.6" Storyboard.TargetName="LoginTextBox"
                              Storyboard.TargetProperty="Opacity"
-                             To="1" Duration="0:0:0.15"/>
-            <DoubleAnimation BeginTime="0:0:0.4" Storyboard.TargetName="PasswordTextBox"
+                             To="1" Duration="0:0:0.25"/>
+            <DoubleAnimation BeginTime="0:0:0.6" Storyboard.TargetName="PasswordTextBox"
                              Storyboard.TargetProperty="Opacity"
-                             To="1" Duration="0:0:0.15"/>
-            <DoubleAnimation BeginTime="0:0:0.4" Storyboard.TargetName="LoginTextBox"
+                             To="1" Duration="0:0:0.25"/>
+            <DoubleAnimation BeginTime="0:0:0.6" Storyboard.TargetName="LoginTextBox"
                              Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
-                             To="0" Duration="0:0:0.35"/>
-            <DoubleAnimation BeginTime="0:0:0.4" Storyboard.TargetName="PasswordTextBox"
+                             To="0" Duration="0:0:0.4"/>
+            <DoubleAnimation BeginTime="0:0:0.6" Storyboard.TargetName="PasswordTextBox"
                              Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
-                             To="0" Duration="0:0:0.35"/>
+                             To="0" Duration="0:0:0.4"/>
+        </Storyboard>
+        
+        <Storyboard x:Key="OnPageLeaveStoryboard" Completed="OnPageLeaveStoryboard_OnCompleted">
+            <FadeOutThemeAnimation TargetName="LoginPanelContainer" Duration="0:0:0.3"/>
+            <FadeOutThemeAnimation TargetName="LoginButtonsContainer" Duration="0:0:0.3"/>
+
+            <DoubleAnimation To="-600" Storyboard.TargetName="MirkoLogoImage" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                             Duration="0:0:0.45" BeginTime="0:0:0.25">
+                <DoubleAnimation.EasingFunction>
+                    <CircleEase EasingMode="EaseInOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation To="-300" Storyboard.TargetName="MirkoLogoImage" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                             Duration="0:0:0.45"
+                             BeginTime="0:0:0.25">
+                <DoubleAnimation.EasingFunction>
+                    <CircleEase EasingMode="EaseInOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
         </Storyboard>
     </Page.Resources>
 
@@ -88,16 +107,18 @@
                 <media:ControlStoryboardAction ControlStoryboardOption="Play" 
                                                Storyboard="{StaticResource OnLoadedAnimationStoryboard}"/>
             </core:EventTriggerBehavior>
+            <core:DataTriggerBehavior Binding="{Binding IsPageLeaveRequested}" Value="True">
+                <media:ControlStoryboardAction Storyboard="{StaticResource OnPageLeaveStoryboard}"/>
+            </core:DataTriggerBehavior>
         </interactivity:Interaction.Behaviors>
-        
         <!-- HACK! preventing ugly textbox login autofocus... -->
-        <TextBox Height="10" Width="10" VerticalAlignment="Top" IsHitTestVisible="False" Opacity="0"/>
+        <TextBox Height="10" Width="10" VerticalAlignment="Top" IsHitTestVisible="False" Opacity="0" PreventKeyboardDisplayOnProgrammaticFocus="True"/>
 
         <Image Name="MirkoLogoImage" Source="Assets/App/MirkoLoginLogo.png" Stretch="None"
                HorizontalAlignment="Center"
-               VerticalAlignment="Center" Grid.ColumnSpan="2">
+               VerticalAlignment="Center" Grid.ColumnSpan="2" ImageOpened="MirkoLogoImage_OnImageOpened">
             <Image.RenderTransform>
-                <TranslateTransform X="0"/>
+                <TranslateTransform X="0" Y="0"/>
             </Image.RenderTransform>
         </Image>
         
@@ -124,7 +145,7 @@
                         Opacity="0">                
                 <Button Background="White" Foreground="Black" FontSize="25" BorderBrush="White" BorderThickness="1">
                     <Button.Flyout>
-                        <Flyout Placement="Full" >
+                        <Flyout x:Name="acceptFlyout" Placement="Full" >
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
@@ -141,7 +162,7 @@
                                 </StackPanel>
 
                                 <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.RowSpan="2"
-                                        Command="{Binding LoginCommand}">
+                                        Command="{Binding LoginCommand}" Click="AcceptButton_Click">
                                     Zgadzam się
                                 </Button>
                             </Grid>

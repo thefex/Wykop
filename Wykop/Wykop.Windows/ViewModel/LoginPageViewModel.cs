@@ -16,11 +16,15 @@ namespace Wykop.ViewModel
         public LoginPageViewModel(ILoginService loginService, ViewServices viewServices)
             : base(viewServices)
         {
-            _loginCommand = new LoginCommand(loginService, viewServices.Dialog, async () => Navigation.NavigateTo(NavigationPageKeys.DashboardPageKey));
+            _loginCommand = new LoginCommand(loginService, viewServices.Dialog, () =>
+            {
+                IsPageLeaveRequested = true;
+                return Task.FromResult(true);
+            });
 
             LoginCommand = new RelayCommand(async () => await TryRunAsynchronousOperation(Login));
-            SkipLoginCommand = new RelayCommand(() =>
-             Navigation.NavigateTo(NavigationPageKeys.DashboardPageKey));
+            SkipLoginCommand = new RelayCommand(() => IsPageLeaveRequested = true);
+            TransferToDashboardCommand = new RelayCommand(() => Navigation.NavigateTo(NavigationPageKeys.DashboardPageKey));
         }
 
         private async Task Login()
@@ -34,11 +38,13 @@ namespace Wykop.ViewModel
             await _loginCommand.Execute(loginData, CurrentCancellationToken);
         }
 
+        public bool IsPageLeaveRequested { get; set; }
         
         public string LoginName { get; set; }
         public string Password { get; set; }
 
         public RelayCommand SkipLoginCommand { get; private set; }
         public RelayCommand LoginCommand { get; private set; }
+        public RelayCommand TransferToDashboardCommand { get; private set; }
     }
 }
