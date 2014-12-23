@@ -28,9 +28,14 @@
                                        Margin="0 -5 0 0"/>
                         </Border>
                         
-                        <StackPanel Orientation="Vertical" Grid.Column="1" Margin="20 0 0 0">
-                            <TextBlock Text="{Binding Title}" Style="{StaticResource SubheaderTextBlockStyle}"/>
-                            <TextBlock Text="Tu nie wiem co dać skrót z opisu (kilkanaście znaków opisu?)" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                        <StackPanel Orientation="Vertical" Grid.Column="1" Margin="20 0 0 0" MaxWidth="600">
+                            <TextBlock Text="{Binding Title}" Style="{StaticResource SubheaderTextBlockStyle}"
+                                       MaxLines="1" TextTrimming="CharacterEllipsis"
+                                       Foreground="{ThemeResource UpcomingWykopTitleForegroundBrush}"/>
+                            <TextBlock Text="{Binding Description}" Style="{StaticResource SubtitleTextBlockStyle}"
+                                       MaxLines="3" TextWrapping="WrapWholeWords" TextTrimming="WordEllipsis"
+                                       TextAlignment="Justify"
+                                       Foreground="{ThemeResource UpcomingWykopContentForegroundBrush}"/>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>

@@ -14,4 +14,7 @@
     <SolidColorBrush Color="#333333" x:Key="MirkoDateForegroundBrush"/>
     <SolidColorBrush Color="#FF5917" x:Key="MirkoAuthorForegroundBrush"/>
     <SolidColorBrush Color="#3B915F" x:Key="MirkoPlusForegroundBrush"/>
+
+    <SolidColorBrush Color="#D6D6D6" x:Key="UpcomingWykopTitleForegroundBrush"/>
+    <SolidColorBrush Color="#686868" x:Key="UpcomingWykopContentForegroundBrush"/>
 </ResourceDictionary>
