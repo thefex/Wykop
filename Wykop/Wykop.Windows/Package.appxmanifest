@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-  <Identity Name="46598fex.wypok" Publisher="CN=02AE2CB7-DA30-40A9-B8DA-F3BF5C8DCC87" Version="1.1.0.3" />
+  <Identity Name="46598fex.wypok" Publisher="CN=02AE2CB7-DA30-40A9-B8DA-F3BF5C8DCC87" Version="1.1.0.4" />
   <Properties>
     <DisplayName>wypok</DisplayName>
     <PublisherDisplayName>fex</PublisherDisplayName>

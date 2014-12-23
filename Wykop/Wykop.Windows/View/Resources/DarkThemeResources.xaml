@@ -10,4 +10,8 @@
     <SolidColorBrush Color="White" x:Key="ApplicationSettingsCharmBackgroundSolidColorBrush"/>
     <SolidColorBrush Color="Black" x:Key="ApplicationSettingsCharmForegroundSolidColorBrush"/>
 
+    <SolidColorBrush Color="#CACECF" x:Key="MirkoCommentForegroundBrush"/>
+    <SolidColorBrush Color="#333333" x:Key="MirkoDateForegroundBrush"/>
+    <SolidColorBrush Color="#FF5917" x:Key="MirkoAuthorForegroundBrush"/>
+    <SolidColorBrush Color="#3B915F" x:Key="MirkoPlusForegroundBrush"/>
 </ResourceDictionary>

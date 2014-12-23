@@ -132,6 +132,7 @@
     <Compile Include="View\Charms\SettingsCharmUserControl.xaml.cs">
       <DependentUpon>SettingsCharmUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Converters\ProfileSexToColorValueConverter.cs" />
     <Compile Include="View\DashboardHomeUserControl.xaml.cs">
       <DependentUpon>DashboardHomeUserControl.xaml</DependentUpon>
     </Compile>
@@ -284,9 +285,7 @@
       <Name>Behaviors SDK %28XAML%29</Name>
     </SDKReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="View\Converters\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>

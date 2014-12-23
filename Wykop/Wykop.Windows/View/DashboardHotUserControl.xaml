@@ -12,9 +12,21 @@
     <Grid>
         <ListView ItemsSource="{Binding HotEntries}" SelectionMode="None" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                   ScrollViewer.VerticalScrollBarVisibility="Disabled">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Margin" Value="0 0 0 25"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            
+            <ListView.ItemContainerTransitions>
+                <TransitionCollection>
+                    <ContentThemeTransition/>
+                </TransitionCollection>
+            </ListView.ItemContainerTransitions>
+            
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <Grid Width="425">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
@@ -22,21 +34,30 @@
                         
                         <Grid Grid.Row="0">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             
                             <StackPanel Grid.Column="0" Orientation="Horizontal">
-                                <TextBlock Text="{Binding Author}"/>
-                                <TextBlock Text="{Binding CreatedDate}"></TextBlock>                              
+                                <Ellipse Fill="DodgerBlue" Width="7.5" Height="7.5" Stretch="Uniform"
+                                         VerticalAlignment="Center" HorizontalAlignment="Left"
+                                         Margin="7.5 7.5 0 0"/>
+                                <TextBlock Text="{Binding Author}" Style="{StaticResource SubtitleTextBlockStyle}" Margin="10 0 0 0"
+                                           Foreground="{ThemeResource MirkoAuthorForegroundBrush}"/>
+                                <TextBlock Text="{Binding CreatedDate}" Foreground="{ThemeResource MirkoDateForegroundBrush}"
+                                           Style="{StaticResource SubtitleTextBlockStyle}" Margin="10 0 0 0"/>                              
                             </StackPanel>
 
-                            <TextBlock Text="{Binding VoteCount}" Grid.Column="1" HorizontalAlignment="Right"></TextBlock>
+                            <TextBlock Foreground="{ThemeResource MirkoPlusForegroundBrush}" Grid.Column="1" 
+                                       HorizontalAlignment="Right">
+                                <Run Text="+"/>
+                                <Run Text="{Binding VoteCount}"/>
+                            </TextBlock>
                         </Grid>
                         
                         <TextBlock Text="{Binding Body}" Grid.Row="1" Style="{StaticResource BodyTextBlockStyle}"
-                                   TextWrapping="Wrap" MaxWidth="300" Grid.ColumnSpan="2" HorizontalAlignment="Left"
-                                   Foreground="DarkGray"/>
+                                   TextWrapping="Wrap" Grid.ColumnSpan="2" HorizontalAlignment="Left"
+                                   Foreground="{ThemeResource MirkoCommentForegroundBrush}" MaxLines="6" TextTrimming="WordEllipsis"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
