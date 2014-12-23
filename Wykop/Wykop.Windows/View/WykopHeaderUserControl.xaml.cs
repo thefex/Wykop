@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -18,9 +17,9 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Wykop.View
 {
-    public sealed partial class DashboardHotUserControl : UserControl
+    public sealed partial class WykopHeaderUserControl : UserControl
     {
-        public DashboardHotUserControl()
+        public WykopHeaderUserControl()
         {
             this.InitializeComponent();
         }

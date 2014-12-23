@@ -1,0 +1,34 @@
+﻿<UserControl
+    x:Class="Wykop.View.WykopHeaderUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Wykop.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Image Source="/Assets/App/MirkoLoginLogo.png" Stretch="None">
+            <Image.RenderTransform>
+                <ScaleTransform ScaleX="0.5" ScaleY="0.5"></ScaleTransform>
+            </Image.RenderTransform>
+        </Image>
+        <Button Style="{StaticResource TextBlockButtonStyle}" Grid.Column="1" VerticalAlignment="Top"
+                Margin="10 0 0 0">
+            <Button.Transitions>
+                <TransitionCollection>
+                    <ContentThemeTransition VerticalOffset="-50"/>
+                </TransitionCollection>
+            </Button.Transitions>
+            
+            <TextBlock FontFamily="Segoe UI Symbol" Text="&#xE0A1;"
+                       FontSize="30" Margin="-55 0 0 0"/>
+        </Button>
+    </Grid>
+</UserControl>

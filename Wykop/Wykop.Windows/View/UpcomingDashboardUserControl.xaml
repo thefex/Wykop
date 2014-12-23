@@ -10,7 +10,9 @@
     d:DesignWidth="400">
     
     <Grid>
-        <ListView ItemsSource="{Binding WykopaliskoLinks}" SelectionMode="None">
+        <ListView ItemsSource="{Binding WykopaliskoLinks}" SelectionMode="None" 
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  ScrollViewer.VerticalScrollBarVisibility="Disabled">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>

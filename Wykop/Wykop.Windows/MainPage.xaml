@@ -36,7 +36,7 @@
         
         <Storyboard x:Key="OnLoadedAnimationStoryboard" BeginTime="0:0:0.4">
             <DoubleAnimation BeginTime="0:0:0" To="-282" Storyboard.TargetName="MirkoLogoImage"
-                             Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)"
                              Duration="0:0:0.75">
                 <DoubleAnimation.EasingFunction>
                     <BackEase EasingMode="EaseInOut" Amplitude="1.5"/>
@@ -85,20 +85,36 @@
             <FadeOutThemeAnimation TargetName="LoginPanelContainer" Duration="0:0:0.3"/>
             <FadeOutThemeAnimation TargetName="LoginButtonsContainer" Duration="0:0:0.3"/>
 
-            <DoubleAnimation To="-600" Storyboard.TargetName="MirkoLogoImage" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+            <DoubleAnimation To="-600" Storyboard.TargetName="MirkoLogoImage" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)"
                              Duration="0:0:0.45" BeginTime="0:0:0.25">
                 <DoubleAnimation.EasingFunction>
                     <CircleEase EasingMode="EaseInOut"/>
                 </DoubleAnimation.EasingFunction>
             </DoubleAnimation>
-            <DoubleAnimation To="-300" Storyboard.TargetName="MirkoLogoImage" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+            <DoubleAnimation To="-300" Storyboard.TargetName="MirkoLogoImage" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
                              Duration="0:0:0.45"
                              BeginTime="0:0:0.25">
                 <DoubleAnimation.EasingFunction>
                     <CircleEase EasingMode="EaseInOut"/>
                 </DoubleAnimation.EasingFunction>
             </DoubleAnimation>
+
+            <DoubleAnimation To="0.5" Storyboard.TargetName="MirkoLogoImage" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)"
+                             Duration="0:0:0.7"
+                             BeginTime="0:0:0.2">
+                <DoubleAnimation.EasingFunction>
+                    <CircleEase EasingMode="EaseInOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation To="0.5" Storyboard.TargetName="MirkoLogoImage" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)"
+                             Duration="0:0:0.7"
+                             BeginTime="0:0:0.2">
+                <DoubleAnimation.EasingFunction>
+                    <CircleEase EasingMode="EaseInOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
         </Storyboard>
+        
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationBackgroundSolidColorBrush}">
@@ -118,7 +134,8 @@
                HorizontalAlignment="Center"
                VerticalAlignment="Center" Grid.ColumnSpan="2" ImageOpened="MirkoLogoImage_OnImageOpened">
             <Image.RenderTransform>
-                <TranslateTransform X="0" Y="0"/>
+                <CompositeTransform ScaleY="1" ScaleX="1" TranslateX="0" TranslateY="0"/>
+                
             </Image.RenderTransform>
         </Image>
         

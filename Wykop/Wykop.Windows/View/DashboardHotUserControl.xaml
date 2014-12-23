@@ -10,7 +10,8 @@
     d:DesignWidth="400">
     
     <Grid>
-        <ListView ItemsSource="{Binding HotEntries}" SelectionMode="None">
+        <ListView ItemsSource="{Binding HotEntries}" SelectionMode="None" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  ScrollViewer.VerticalScrollBarVisibility="Disabled">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>

@@ -32,7 +32,7 @@ namespace Wykop
         private void MirkoLogoImage_OnImageOpened(object sender, RoutedEventArgs e)
         {
             const double wykopHeaderMarginLeft = 45;
-            const double wykopHeaderMarginTop = 15;
+            const double wykopHeaderMarginTop = 25;
 
             var imageSender = sender as Image;
             Storyboard leaveAnimationStoryboard = Resources["OnPageLeaveStoryboard"] as Storyboard;
