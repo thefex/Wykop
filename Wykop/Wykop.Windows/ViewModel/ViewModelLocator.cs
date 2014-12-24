@@ -1,6 +1,7 @@
 ﻿using Ninject;
 using Wykop.Common;
 using Wykop.Config;
+using Wykop.ViewModel.MirkoBlog;
 
 namespace Wykop.ViewModel
 {

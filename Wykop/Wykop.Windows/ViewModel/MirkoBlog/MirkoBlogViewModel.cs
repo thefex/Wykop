@@ -9,7 +9,7 @@ using Wykop.ApiProvider.Model;
 using Wykop.Common;
 using Wykop.View;
 
-namespace Wykop.ViewModel
+namespace Wykop.ViewModel.MirkoBlog
 {
     public class MirkoBlogViewModel : BaseViewModel
     {
