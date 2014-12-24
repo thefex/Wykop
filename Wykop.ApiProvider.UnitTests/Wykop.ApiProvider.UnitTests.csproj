@@ -113,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\RestRequestAsserts.cs" />
+    <Compile Include="Data\Entry\Entries\EntriesAddRequestUnitTests.cs" />
     <Compile Include="Data\Entry\Stream\StreamHotEntriesRequestUnitTests.cs" />
     <Compile Include="Data\Entry\Stream\StreamIndexEntriesRequestUnitTests.cs" />
     <Compile Include="Data\Link\Links\PromotedMainLinksRequestUnitTests.cs" />
