@@ -113,6 +113,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\RestRequestAsserts.cs" />
+    <Compile Include="Data\ConversationList\PM\ConversationListRequestUnitTests.cs" />
+    <Compile Include="Data\Conversation\ConversationRequestUnitTests.cs" />
     <Compile Include="Data\Entry\Entries\EntriesAddRequestUnitTests.cs" />
     <Compile Include="Data\Entry\Stream\StreamHotEntriesRequestUnitTests.cs" />
     <Compile Include="Data\Entry\Stream\StreamIndexEntriesRequestUnitTests.cs" />
@@ -122,8 +124,12 @@
     <Compile Include="Data\MyWykop\MyWykopNotificationsCountRequestTests.cs" />
     <Compile Include="Data\Profile\ProfileAddedLinksRequestsTests.cs" />
     <Compile Include="Data\Profile\ProfileBuriedLinksRequestUnitTests.cs" />
+    <Compile Include="Data\Profile\ProfileCommentedLinksRequestUnitTests.cs" />
+    <Compile Include="Data\Profile\ProfileDiggedLinksRequestUnitTests.cs" />
+    <Compile Include="Data\Profile\ProfileFavoritesLinksRequestUnitTests.cs" />
     <Compile Include="Data\Profile\ProfileIndexRequestUnitTests.cs" />
     <Compile Include="Data\Profile\ProfileLinksRequestTestFixture.cs" />
+    <Compile Include="Data\Profile\ProfilePublishedLinksRequestUnitTests.cs" />
     <Compile Include="Data\RestSharpSetupFixture.cs" />
     <Compile Include="Data\UnitTestsConstants.cs" />
     <Compile Include="Data\WykopRequestBaseTestFixture.cs" />
