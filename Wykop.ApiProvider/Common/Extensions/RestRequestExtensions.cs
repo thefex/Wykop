@@ -32,6 +32,7 @@ namespace Wykop.ApiProvider.Common.Extensions
                 postValues = request.Parameters
                     .Where(x => 
                         x.Type == ParameterType.GetOrPost || x.Type == ParameterType.RequestBody)
+                    .OrderBy(x => x.Name)
                     .Select(x => x.Value.ToString())
                     .ToList();
             }
@@ -41,7 +42,6 @@ namespace Wykop.ApiProvider.Common.Extensions
                 return string.Empty;
 
             return postValues
-                .OrderBy(x => x)
                 .Aggregate((previousParameter, currentParameter) => previousParameter + "," + currentParameter);
         }
     }
