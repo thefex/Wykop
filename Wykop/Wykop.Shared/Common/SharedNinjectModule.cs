@@ -31,6 +31,9 @@ namespace Wykop.Common
                 .To<DefaultWykopDataCollectionProvider<EntriesRequest, Entry>>()
                 .InSingletonScope();
 
+            Bind<IWykopDataProvider>()
+                .To<DefaultWykopDataProvider>();
+
             Bind<IEntriesCreator>().To<LoggedUserEntriesCreator>();
 
             Bind<ViewServices>().ToSelf();

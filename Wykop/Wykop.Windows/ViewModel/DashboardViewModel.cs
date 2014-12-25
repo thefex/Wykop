@@ -17,6 +17,7 @@ namespace Wykop.ViewModel
         public HotDashboardViewModel Hot { get; set; }
         public WykopaliskoDashboardViewModel Wykopalisko { get; set; }
         public UserProfileViewModel UserProfile { get; set; }
+        public MyConversationsViewModel Conversations { get; set; }
 
         public RelayCommand NavigateToMikroblog { get; private set; }
 
@@ -24,7 +25,7 @@ namespace Wykop.ViewModel
         {
             var tasksToExecute = new Task[]
             {
-                base.Load(), Home.Load(), Wykopalisko.Load(), Hot.Load(), UserProfile.Load()
+                base.Load(), Home.Load(), Wykopalisko.Load(), Hot.Load(), UserProfile.Load(), Conversations.Load()
             };
 
             return Task.WhenAll(tasksToExecute);

@@ -123,6 +123,7 @@
     <Compile Include="ViewModel\DashboardViewModel.cs" />
     <Compile Include="ViewModel\Dashboard\HomeDashboardViewModel.cs" />
     <Compile Include="ViewModel\Dashboard\HotDashboardViewModel.cs" />
+    <Compile Include="ViewModel\Dashboard\MyConversationsViewModel.cs" />
     <Compile Include="ViewModel\Dashboard\UserProfileViewModel.cs" />
     <Compile Include="ViewModel\Dashboard\WykopaliskoDashboardViewModel.cs" />
     <Compile Include="ViewModel\LoginPageViewModel.cs" />
@@ -139,6 +140,9 @@
     </Compile>
     <Compile Include="View\DashboardHotUserControl.xaml.cs">
       <DependentUpon>DashboardHotUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DashboardMyConversationsUserControl.xaml.cs">
+      <DependentUpon>DashboardMyConversationsUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoggedUserHeaderControl.xaml.cs">
       <DependentUpon>LoggedUserHeaderControl.xaml</DependentUpon>
@@ -195,6 +199,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\DashboardHotUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DashboardMyConversationsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

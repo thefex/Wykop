@@ -32,7 +32,8 @@ namespace Wykop.Config
                 .WithPropertyValue("Home", context => context.Kernel.Get<HomeDashboardViewModel>())
                 .WithPropertyValue("Wykopalisko", context => context.Kernel.Get<WykopaliskoDashboardViewModel>())
                 .WithPropertyValue("Hot", context => context.Kernel.Get<HotDashboardViewModel>())
-                .WithPropertyValue("UserProfile", context => context.Kernel.Get<UserProfileViewModel>());
+                .WithPropertyValue("UserProfile", context => context.Kernel.Get<UserProfileViewModel>())
+                .WithPropertyValue("Conversations", context => context.Kernel.Get<MyConversationsViewModel>());
         }
     }
 }

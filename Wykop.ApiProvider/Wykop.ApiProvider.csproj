@@ -130,6 +130,7 @@
     <Compile Include="Login\LoginService.cs" />
     <Compile Include="Login\UserApplicationKeyProvider.cs" />
     <Compile Include="Model\Extensions\ConversationListExtensions.cs" />
+    <Compile Include="Model\Extensions\LoggedUserExtensions.cs" />
     <Compile Include="Model\MessagesRelated\ConversationList.cs" />
     <Compile Include="Model\Entry.cs" />
     <Compile Include="Model\JSONDeserializers\Converter\TagsConverter.cs" />

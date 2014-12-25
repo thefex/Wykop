@@ -58,21 +58,28 @@
                                       Margin="0 25 45 0"/>
         
         <Hub Name="HubCenter" Margin="0 10 0 0" Opacity="0">            
-            <HubSection Header="Główna" MinWidth="600" Opacity="0" Name="HubSectionMain">
+            <HubSection Header="GŁÓWNA" MinWidth="1400" Opacity="0" Name="HubSectionMain">
                 <DataTemplate>
                     <view:DashboardHomeUserControl DataContext="{Binding Home}"/>
                 </DataTemplate>
             </HubSection>
 
-            <HubSection Header="Gorące" MinWidth="300" Opacity="0" Name="HubSectionHot">
+            <HubSection Header="GORĄCE" MinWidth="300" Opacity="0" Name="HubSectionHot">
                 <DataTemplate>
                     <view:DashboardHotUserControl DataContext="{Binding Hot}"/>
                 </DataTemplate>
             </HubSection>
 
-            <HubSection Header="Wykopalisko" MinWidth="300" Name="HubSectionWykopalisko">
+            <HubSection Header="WYKOPALISKO" MinWidth="300" Name="HubSectionWykopalisko">
                 <DataTemplate>
                     <view:UpcomingDashboardUserControl DataContext="{Binding Wykopalisko}"/>
+                </DataTemplate>
+            </HubSection>
+            
+            <HubSection Header="MOJE KONWERSACJE" MinWidth="300" Name="HubSectionConversations"
+                        DataContext="{Binding Conversations}">
+                <DataTemplate>
+                    <view:DashboardMyConversationsUserControl/>
                 </DataTemplate>
             </HubSection>
         </Hub>
