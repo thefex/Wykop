@@ -1,7 +1,7 @@
 ﻿using System;
-using Wykop.ApiProvider.Data.LinkRequest.Helpers;
+using Wykop.ApiProvider.Data.LinkRequest.Top;
 
-namespace Wykop.ApiProvider.Data.LinkRequest.Top
+namespace Wykop.ApiProvider.Data.Link.Top
 {
     public class TopForYearMonthLinksRequest : TopLinksRequest
     {
@@ -16,11 +16,11 @@ namespace Wykop.ApiProvider.Data.LinkRequest.Top
         {
             base.BuildParameters();
 
-            var yearParameter = MethodParameterProvider.GetYearParameter("param1", ForYearMonthDate);
-            var monthParameter = MethodParameterProvider.GetMonthParameter("param2", ForYearMonthDate);
-
-            AddParameterToRequest(yearParameter);
-            AddParameterToRequest(monthParameter);
+            var yearParameter = new MethodParameter() { MethodName = "param1", Value = ForYearMonthDate.Year.ToString() };
+            var monthParameter = new MethodParameter() { MethodName = "param2", Value = ForYearMonthDate.Month.ToString() };
+         
+            AddMethodParameterToRequest(yearParameter);
+            AddMethodParameterToRequest(monthParameter);
         }
     }
 }

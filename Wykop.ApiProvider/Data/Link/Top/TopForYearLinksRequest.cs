@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Wykop.ApiProvider.Data.LinkRequest.Helpers;
+using Wykop.ApiProvider.Data.LinkRequest.Top;
 
-namespace Wykop.ApiProvider.Data.LinkRequest.Top
+namespace Wykop.ApiProvider.Data.Link.Top
 {
     public class TopForYearLinksRequest : TopLinksRequest
     {
@@ -20,8 +16,8 @@ namespace Wykop.ApiProvider.Data.LinkRequest.Top
         {
             base.BuildParameters();
 
-            var yearParameter = MethodParameterProvider.GetYearParameter("param1", ForYearDate);
-            AddParameterToRequest(yearParameter);
+            var yearParameter = new MethodParameter() { MethodName = "param1", Value = ForYearDate.Year.ToString() };
+            AddMethodParameterToRequest(yearParameter);
         }
     }
 }
