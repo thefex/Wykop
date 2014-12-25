@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Net.Http;
 using NUnit.Framework;
 using RestSharp.Portable;
 using Wykop.ApiProvider.Common.Extensions;
@@ -40,7 +41,7 @@ namespace Wykop.ApiProvider.UnitTests.Data
 
         protected void AssertThatRequestIsCorrectlySigned(RestRequest request, Uri expectedUri)
         {
-            string apiSignStringToHash = UnitTestsConstants.ApiSecret + expectedUri.OriginalString;
+            string apiSignStringToHash = UnitTestsConstants.ApiSecret + expectedUri.OriginalString + GetPostParametersValuesString(request);
             string apiSignHash = HashHelper.CalculateMD5Hash(apiSignStringToHash);
 
             var apiSignHeaderParameter =
@@ -48,6 +49,21 @@ namespace Wykop.ApiProvider.UnitTests.Data
 
             Assert.NotNull(apiSignHeaderParameter, "Request doesn't contain apisign http header.");
             Assert.AreEqual(apiSignHash, (string)apiSignHeaderParameter.Value, "APISign value is invalid.");
+        }
+
+        private string GetPostParametersValuesString(RestRequest request)
+        {
+            if (request.Method != HttpMethod.Post)
+                return string.Empty;
+
+            var postParameters = request.Parameters.Where(x => x.Type == ParameterType.GetOrPost);
+
+            if (!postParameters.Any())
+                return string.Empty;
+
+            return postParameters.OrderBy(x => x.Name)
+                                .Select(x => x.Value.ToString())
+                                .Aggregate((previous, current) => previous.ToString() + "," + current.ToString());
         }
 
     }

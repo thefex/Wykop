@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.Networking.Vpn;
+using System.Net.Http;
 using NUnit.Framework;
 using RestSharp.Portable;
 using Wykop.ApiProvider.Data.Entry.Entries;
@@ -25,15 +22,16 @@ namespace Wykop.ApiProvider.UnitTests.Data.Entry.Entries
          *     embed - plik graficzny który ma być osadzony w obiekcie (parametr nadpisuje url)
          */
 
-        private readonly string fakeUserKey = "userKey";
-        private readonly string fakeBody = "this is body bla bla";
-        private readonly Uri fakeMediaUri = new Uri("http://www.unittests.com"); 
         private EntriesAddRequest systemUnderTest;
+        private readonly string fakeBody = "this is body bla bla";
+        private readonly Uri fakeMediaUri = new Uri("http://www.unittests.com");
+
+        private readonly string fakeUserKey = "userKey";
 
         [SetUp]
         public void SetupTests()
         {
-            systemUnderTest = new EntriesAddRequest()
+            systemUnderTest = new EntriesAddRequest
             {
                 UserKey = fakeUserKey,
                 Body = fakeBody,
@@ -41,7 +39,7 @@ namespace Wykop.ApiProvider.UnitTests.Data.Entry.Entries
             };
 
             ExpectedRequestUri = new Uri("http://a.wykop.pl/Entries/Add/userkey," + fakeUserKey + ",appkey," +
-                                        UnitTestsConstants.AppKey);
+                                         UnitTestsConstants.AppKey);
             WykopRequest = systemUnderTest;
         }
 
@@ -49,7 +47,8 @@ namespace Wykop.ApiProvider.UnitTests.Data.Entry.Entries
         public void BuildRequest_FieldsAreFilled_BodyAndMediaUriShouldBeEmbeddedInPost()
         {
             var restRequest = systemUnderTest.BuildRestRequest();
-            var postBodyParameters = restRequest.Parameters.Where(x => x.Type == ParameterType.RequestBody).ToList();
+            Assert.AreEqual(HttpMethod.Post, restRequest.Method, "Request is not sended as POST!");
+            var postBodyParameters = restRequest.Parameters.Where(x => x.Type == ParameterType.GetOrPost).ToList();
 
             Assert.AreEqual(postBodyParameters.Count, 2);
 
@@ -65,8 +64,28 @@ namespace Wykop.ApiProvider.UnitTests.Data.Entry.Entries
         [Test]
         public void BuildRequest_UserKeyIsMissing_RequestCouldNotBeBuildExceptionShouldBeThrown()
         {
-            var sut = new EntriesAddRequest();
+            var sut = new EntriesAddRequest
+            {
+                Body = "testBody",
+                EmbeddedMediaUri = new Uri("http://unittests.com")
+            };
             Assert.Throws<RequestCouldNotBeBuildException>(() => sut.BuildRestRequest());
+        }
+
+        [Test]
+        public void BuildRequest_BodyOrEmbeddedMediaIsMissing_RequestCouldNotBeBuildExceptionShouldBeThrown()
+        {
+            var sut = new EntriesAddRequest
+            {
+                UserKey = "testUserKey"
+            };
+            Assert.Throws<RequestCouldNotBeBuildException>(() => sut.BuildRestRequest());
+        }
+
+        [Test]
+        public void BuildRequest_AssertThatRequestIsSendAsPost()
+        {
+            Assert.AreEqual(HttpMethod.Post, systemUnderTest.BuildRestRequest().Method);
         }
     }
 }
