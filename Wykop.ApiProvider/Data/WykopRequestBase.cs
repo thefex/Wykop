@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Xml.Linq;
 using RestSharp.Portable;
 using Wykop.ApiProvider.Common.Extensions;
 
@@ -14,14 +12,16 @@ namespace Wykop.ApiProvider.Data
         {
             RequestParameters = new List<Parameter>();
             ApiParameters = new List<ApiParameter>();
+            MethodParameters = new List<MethodParameter>();
+
             RequestHttpMethod = HttpMethod.Get;
             ShouldIncludeHtml = true;
         }
 
         public bool ShouldIncludeHtml { get; set; }
-
         private IList<Parameter> RequestParameters { get; set; }
         private IList<ApiParameter> ApiParameters { get; set; }
+        private IList<MethodParameter> MethodParameters { get; set; }
         protected HttpMethod RequestHttpMethod { get; set; }
         internal abstract string GetResourceTypeName();
         internal abstract string GetResourceMethodName();
@@ -30,14 +30,19 @@ namespace Wykop.ApiProvider.Data
         {
         }
 
-        protected void AddParameterToRequest(Parameter parameter)
+        protected void AddMethodParameterToRequest(MethodParameter methodParameter)
         {
-            RequestParameters.Add(parameter);
+            MethodParameters.Add(methodParameter);
         }
 
         protected void AddApiParameterToRequest(ApiParameter apiParameter)
         {
             ApiParameters.Add(apiParameter);
+        }
+
+        protected void AddParameterToRequest(Parameter parameter)
+        {
+            RequestParameters.Add(parameter);
         }
 
         internal RestRequest BuildRestRequest()
@@ -59,7 +64,22 @@ namespace Wykop.ApiProvider.Data
 
         private string BuildResourceUrl()
         {
-            var apiParametersString = String.Empty;
+            string resourceUrl = GetResourceTypeName() + "/" + GetResourceMethodName();
+
+            string methodParameters = GetMethodParametersString();
+            string apiParameters = GetApiParametersString();
+
+            if (!string.IsNullOrEmpty(methodParameters))
+                resourceUrl += "/" + GetMethodParametersString();
+            if (!string.IsNullOrEmpty(apiParameters))
+                resourceUrl += "/" + GetApiParametersString();
+
+            return resourceUrl;
+        }
+
+        private string GetApiParametersString()
+        {
+            var apiParametersString = string.Empty;
 
             if (ApiParameters.Any())
             {
@@ -75,9 +95,17 @@ namespace Wykop.ApiProvider.Data
                 apiParametersString += "output,clear";
             }
 
-            var resourceUrl = GetResourceTypeName() + "/" + GetResourceMethodName();
+            return apiParametersString;
+        }
 
-            return resourceUrl + "/" + apiParametersString;
+        private string GetMethodParametersString()
+        {
+            if (!MethodParameters.Any())
+                return string.Empty;
+
+            return MethodParameters
+                .Select(x => x.ToString())
+                .Aggregate((previous, current) => previous + "/" + current);
         }
     }
 }
