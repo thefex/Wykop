@@ -5,7 +5,7 @@ using Wykop.ApiProvider.Data.Link.Profile;
 namespace Wykop.ApiProvider.UnitTests.Data.Profile
 {
     [TestFixture]
-    public class ProfileLinksRequestTestFixture : WykopRequestBaseTestFixture
+    public abstract class ProfileLinksRequestTestFixture : WykopRequestBaseTestFixture
     {
         [Test]
         public void BuildRestRequest_RequestedUsernameIsEmpty_ShouldThrowRequestCouldNotBeBuild()
