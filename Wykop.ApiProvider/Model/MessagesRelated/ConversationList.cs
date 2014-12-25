@@ -8,6 +8,9 @@ namespace Wykop.ApiProvider.Model.MessagesRelated
         [JsonProperty("last_update")]
         public DateTime LastUpdatedDate { get; internal set; }
 
+        [JsonProperty("author")]
+        public string Author { get; internal set; }
+
         // TODO: don't have time atm to do smth like this: 
         // http://stackoverflow.com/questions/27460522/json-net-controlling-class-object-properties-deserialization
         [JsonProperty("author_avatar")]
