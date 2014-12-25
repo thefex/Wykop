@@ -1,5 +1,4 @@
-﻿using Wykop.ApiProvider.Data.Exceptions;
-using Wykop.ApiProvider.Data.LinkRequest.Helpers;
+﻿using Wykop.ApiProvider.Data.LinkRequest.Helpers;
 
 namespace Wykop.ApiProvider.Data.Link.Profile
 {
