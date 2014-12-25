@@ -16,6 +16,36 @@
         <behaviors:LoadDataOnPageLoadedBehavior/>
     </interactivity:Interaction.Behaviors>
 
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Add" Label="Dodaj wpis">
+                <AppBarButton.Flyout>
+                    <Flyout Placement="Full">
+                        <Grid DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=MikroBlogAddEntry}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            
+                            <TextBlock Text="Dodaj nowy wpis" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                            
+                            <Grid Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBox Grid.Row="0" Text="{Binding EntryBody, Mode=TwoWay}"/>
+                                
+                                <Button Grid.Row="1" Command="{Binding AddEntryCommand}">Dodaj</Button>
+                            </Grid>
+                            
+                        </Grid>
+                    </Flyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
+        </CommandBar>
+    </Page.BottomAppBar>
+    
     <Grid Background="{ThemeResource ApplicationBackgroundSolidColorBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

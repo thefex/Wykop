@@ -126,7 +126,8 @@
     <Compile Include="ViewModel\Dashboard\UserProfileViewModel.cs" />
     <Compile Include="ViewModel\Dashboard\WykopaliskoDashboardViewModel.cs" />
     <Compile Include="ViewModel\LoginPageViewModel.cs" />
-    <Compile Include="ViewModel\MirkoBlogViewModel.cs" />
+    <Compile Include="ViewModel\MirkoBlog\MirkoBlogViewModel.cs" />
+    <Compile Include="ViewModel\MirkoBlog\MirkoEntryAddViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\Charms\SettingsCharmConfig.cs" />
     <Compile Include="View\Charms\SettingsCharmUserControl.xaml.cs">

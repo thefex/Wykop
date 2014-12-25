@@ -28,5 +28,10 @@ namespace Wykop.ViewModel
         {
             get { return _ninjectKernel.Get<MirkoBlogViewModel>(); }
         }
+
+        public MirkoEntryAddViewModel MikroBlogAddEntry
+        {
+            get { return _ninjectKernel.Get<MirkoEntryAddViewModel>(); }
+        }
     }
 }
