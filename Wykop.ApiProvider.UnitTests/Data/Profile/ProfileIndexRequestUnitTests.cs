@@ -6,7 +6,7 @@ using Wykop.ApiProvider.Data.Link.Profile;
 namespace Wykop.ApiProvider.UnitTests.Data.Profile
 {
     [TestFixture]
-    public class ProfileIndexRequestUnitTests : WykopRequestBaseTestFixture
+    public class ProfileIndexRequestUnitTests : ProfileLinksRequestTestFixture
     {
         private ProfileIndexLinksRequest systemUnderTest;
         [SetUp]
@@ -21,12 +21,6 @@ namespace Wykop.ApiProvider.UnitTests.Data.Profile
             ExpectedRequestUri = new Uri(expectedUriString);
         }
 
-        [Test]
-        public void BuildRestRequest_RequestedUsernameIsEmpty_ShouldThrowRequestCouldNotBeBuild()
-        {
-            var sut = new ProfileIndexLinksRequest("");
 
-            Assert.Throws<RequestCouldNotBeBuildException>( () => sut.BuildRestRequest());
-        }
     }
 }

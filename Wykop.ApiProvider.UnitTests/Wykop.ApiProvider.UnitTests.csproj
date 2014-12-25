@@ -120,6 +120,8 @@
     <Compile Include="Data\Link\Links\UpcomingMainLinksRequestUnitTests.cs" />
     <Compile Include="Data\MyWykop\MyWykopHashTagsNotificationsCountRequestTests.cs" />
     <Compile Include="Data\MyWykop\MyWykopNotificationsCountRequestTests.cs" />
+    <Compile Include="Data\Profile\ProfileIndexRequestUnitTests.cs" />
+    <Compile Include="Data\Profile\ProfileLinksRequestTestFixture.cs" />
     <Compile Include="Data\RestSharpSetupFixture.cs" />
     <Compile Include="Data\UnitTestsConstants.cs" />
     <Compile Include="Data\WykopRequestBaseTestFixture.cs" />
