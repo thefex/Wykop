@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Xml.Linq;
 using RestSharp.Portable;
 using Wykop.ApiProvider.Common.Extensions;
 
@@ -63,7 +64,8 @@ namespace Wykop.ApiProvider.Data
             if (ApiParameters.Any())
             {
                 apiParametersString =
-                    ApiParameters.Select(x => x.ToString())
+                    ApiParameters
+                        .Select(x => x.ToString())
                         .Aggregate((before, current) => before + "," + current);
             }
 
