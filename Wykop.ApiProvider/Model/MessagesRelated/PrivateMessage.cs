@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Wykop.ApiProvider.Model.MessagesRelated
 {
-    public class PrivateMessage
+    public class PrivateMessage : SerializableModel
     {
         [JsonProperty("date")]
         public DateTime MessageDate { get; internal set; }

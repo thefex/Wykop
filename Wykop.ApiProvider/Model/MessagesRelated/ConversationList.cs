@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Wykop.ApiProvider.Model.MessagesRelated
 {
-    public class ConversationList
+    public class ConversationList : SerializableModel
     {
         [JsonProperty("last_update")]
         public DateTime LastUpdatedDate { get; internal set; }
