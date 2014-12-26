@@ -2,29 +2,32 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Wykop.ApiProvider.Data.PMMessage.PM;
-using Wykop.ApiProvider.DataProviders;
+using Wykop.ApiProvider.DataProviders.Interfaces;
 using Wykop.ApiProvider.Model.MessagesRelated;
 
 namespace Wykop.ApiProvider.Model.Extensions
 {
     public static class ConversationListExtensions
     {
-        public static Task<IList<PrivateMessage>> GetAllMessages(this ConversationList conversationList, string userKey,
-            IWykopDataProvider dataProvider)
+        public static Task<IList<PrivateMessage>> GetAllMessages(this ConversationList conversationList,
+            IUserWykopDataProvider dataProvider)
         {
-            return conversationList.GetAllMessages(userKey, dataProvider, CancellationToken.None);
+            return conversationList.GetAllMessages(dataProvider, CancellationToken.None);
         }
 
-        public static async Task<IList<PrivateMessage>> GetAllMessages(this ConversationList conversationList, string userKey,
-            IWykopDataProvider dataProvider, CancellationToken cancellationToken)
+        public static async Task<IList<PrivateMessage>> GetAllMessages(this ConversationList conversationList,
+            IUserWykopDataProvider dataProvider, CancellationToken cancellationToken)
         {
-            var conversationRequest = new ConversationsRequest(userKey)
+            var conversationRequest = new ConversationsRequest
             {
                 RequestedUsername = conversationList.Author
             };
 
-            return await dataProvider.GetData<ConversationsRequest, List<PrivateMessage>>(conversationRequest, cancellationToken)
-                .ConfigureAwait(false);
+            return
+                await
+                    dataProvider.GetUserData<ConversationsRequest, List<PrivateMessage>>(conversationRequest,
+                        cancellationToken)
+                        .ConfigureAwait(false);
         }
     }
 }

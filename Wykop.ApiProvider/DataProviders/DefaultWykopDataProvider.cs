@@ -20,7 +20,8 @@ namespace Wykop.ApiProvider.DataProviders
         {
             // TODO: Error handling
             var restDataRequest = fromRequest.BuildRestRequest();
-            var requestResults = await _restClient.Execute<TResult>(restDataRequest, cancellationToken).ConfigureAwait(false);
+            var requestResults =
+                await _restClient.Execute<TResult>(restDataRequest, cancellationToken).ConfigureAwait(false);
 
             return requestResults.Data;
         }

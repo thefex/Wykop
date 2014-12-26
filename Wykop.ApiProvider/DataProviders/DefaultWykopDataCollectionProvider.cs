@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using RestSharp.Portable;
 using Wykop.ApiProvider.Common.Constants;
 using Wykop.ApiProvider.Data;
+using Wykop.ApiProvider.DataProviders.Interfaces;
 
 namespace Wykop.ApiProvider.DataProviders
 {

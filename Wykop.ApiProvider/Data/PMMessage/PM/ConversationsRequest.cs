@@ -4,13 +4,18 @@ using Wykop.ApiProvider.Model;
 
 namespace Wykop.ApiProvider.Data.PMMessage.PM
 {
-    public class ConversationsRequest : WykopRequestBase
+    public class ConversationsRequest : WykopRequestBase, IAuthorizable
     {
-        private readonly string _mockedUserKey;
+        private string userKey;
 
-        public ConversationsRequest(string mockedUserKey)
+        public ConversationsRequest()
         {
-            _mockedUserKey = mockedUserKey;
+            
+        }
+
+        public ConversationsRequest(string userKey)
+        {
+            this.userKey = userKey;
         }
 
         public ConversationsRequest(LoggedUser loggedUser)
@@ -46,18 +51,23 @@ namespace Wykop.ApiProvider.Data.PMMessage.PM
                 Value = RequestedUsername
             });
 
-            AddApiParameterToRequest(ApiParameterProvider.GetUserKeyParameter(_mockedUserKey));
+            AddApiParameterToRequest(ApiParameterProvider.GetUserKeyParameter(userKey));
             AddApiParameterToRequest(ApiParameterProvider.GetApplicationKeyParameter());
         }
 
         private bool IsUserKeyProvided()
         {
-            return !string.IsNullOrEmpty(_mockedUserKey);
+            return !string.IsNullOrEmpty(userKey);
         }
 
         private bool IsRequestedUsernameProvided()
         {
             return !string.IsNullOrEmpty(RequestedUsername);
+        }
+
+        public void AuthorizeRequest(string userKey)
+        {
+            this.userKey = userKey;
         }
     }
 }

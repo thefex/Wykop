@@ -3,13 +3,18 @@ using Wykop.ApiProvider.Model;
 
 namespace Wykop.ApiProvider.Data.ConversationList.PM
 {
-    public class ConversationListRequest : WykopRequestBase
+    public class ConversationListRequest : WykopRequestBase, IAuthorizable
     {
-        private readonly string _userKey;
+        private string userKey;
+
+        public ConversationListRequest()
+        {
+            
+        }
 
         public ConversationListRequest(string userKey)
         {
-            _userKey = userKey;
+            this.userKey = userKey;
         }
 
         public ConversationListRequest(LoggedUser loggedUser)
@@ -31,8 +36,13 @@ namespace Wykop.ApiProvider.Data.ConversationList.PM
         {
             base.BuildParameters();
 
-            AddApiParameterToRequest(ApiParameterProvider.GetUserKeyParameter(_userKey));
+            AddApiParameterToRequest(ApiParameterProvider.GetUserKeyParameter(userKey));
             AddApiParameterToRequest(ApiParameterProvider.GetApplicationKeyParameter());
+        }
+
+        public void AuthorizeRequest(string authorizationUserKey)
+        {
+            userKey = authorizationUserKey;
         }
     }
 }

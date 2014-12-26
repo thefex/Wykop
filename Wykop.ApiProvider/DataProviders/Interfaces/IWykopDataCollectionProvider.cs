@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Wykop.ApiProvider.Data;
 
-namespace Wykop.ApiProvider.DataProviders
+namespace Wykop.ApiProvider.DataProviders.Interfaces
 {
     public interface IWykopDataCollectionProvider<in TRequest, TResult>
         where TRequest : WykopRequestBase

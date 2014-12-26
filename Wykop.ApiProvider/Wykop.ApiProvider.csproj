@@ -65,8 +65,10 @@
     <Compile Include="DataCreators\LoggedUserEntriesCreator.cs" />
     <Compile Include="DataProviders\DefaultWykopDataCollectionProvider.cs" />
     <Compile Include="DataProviders\DefaultWykopDataProvider.cs" />
-    <Compile Include="DataProviders\IWykopDataCollectionProvider.cs" />
-    <Compile Include="DataProviders\IWykopDataProvider.cs" />
+    <Compile Include="DataProviders\Interfaces\IUserWykopDataProvider.cs" />
+    <Compile Include="DataProviders\Interfaces\IWykopDataCollectionProvider.cs" />
+    <Compile Include="DataProviders\Interfaces\IWykopDataProvider.cs" />
+    <Compile Include="DataProviders\LoggedUserWykopDataProvider.cs" />
     <Compile Include="Data\ApiParameter.cs" />
     <Compile Include="Data\ConversationList\PM\ConversationListRequest.cs" />
     <Compile Include="Data\Entry\EntriesRequest.cs" />
@@ -77,6 +79,7 @@
     <Compile Include="Data\Entry\Stream\StreamIndexEntriesRequest.cs" />
     <Compile Include="Data\Exceptions\RequestCouldNotBeBuildException.cs" />
     <Compile Include="Data\IApiDataContainer.cs" />
+    <Compile Include="Data\IAuthorizable.cs" />
     <Compile Include="Data\Link\Favorites\LoggedUserFavoritesLinksRequest.cs" />
     <Compile Include="Data\Link\Helpers\ApiParameterProvider.cs" />
     <Compile Include="Data\Link\Helpers\PostParameterProvider.cs" />
@@ -142,6 +145,7 @@
     <Compile Include="Model\Operations\CommentContent.cs" />
     <Compile Include="Model\Operations\EntryAddResult.cs" />
     <Compile Include="Model\Profile.cs" />
+    <Compile Include="Model\SerializableModel.cs" />
     <Compile Include="Model\Tag.cs" />
     <Compile Include="Model\Link.cs" />
     <Compile Include="Model\Avatar.cs" />
