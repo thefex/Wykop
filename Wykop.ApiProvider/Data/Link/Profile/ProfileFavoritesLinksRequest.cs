@@ -23,7 +23,6 @@ namespace Wykop.ApiProvider.Data.Link.Profile
 
             AddMethodParameterToRequest(new MethodParameter()
             {
-                MethodName = "param2",
                 Value = RequestedListId.ToString()
             });
 

@@ -19,8 +19,8 @@ namespace Wykop.ApiProvider.UnitTests.Data.Profile
                 RequestedPage = 123456
             };
 
-            string expectedUriString = UnitTestsConstants.WykopHostUrl + "Profile/Favorites/param1/" +
-                                       systemUnderTests.ProfileUsername + "/param2/3" +
+            string expectedUriString = UnitTestsConstants.WykopHostUrl + "Profile/Favorites/" +
+                                       systemUnderTests.ProfileUsername + "/3" +
                                        "/appkey," + UnitTestsConstants.AppKey + ",page,123456";
             ExpectedRequestUri = new Uri(expectedUriString);
             WykopRequest = systemUnderTests;

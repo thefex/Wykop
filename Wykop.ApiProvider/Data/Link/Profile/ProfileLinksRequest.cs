@@ -30,7 +30,6 @@ namespace Wykop.ApiProvider.Data.Link.Profile
 
             var profileUsernameParameter = new MethodParameter()
             {
-                MethodName = "param1",
                 Value = ProfileUsername
             };
             AddMethodParameterToRequest(profileUsernameParameter);

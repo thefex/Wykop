@@ -20,7 +20,7 @@ namespace Wykop.ApiProvider.UnitTests.Data.Conversation
                 RequestedUsername = "testUsername",
             };
 
-            string expectedUriString = UnitTestsConstants.WykopHostUrl + "PM/Conversation/param1/" +
+            string expectedUriString = UnitTestsConstants.WykopHostUrl + "PM/Conversation/" +
                                        systemUnderTest.RequestedUsername + "/userkey," + mockedUserKey +
                                        ",appkey," + UnitTestsConstants.AppKey;
 

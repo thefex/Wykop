@@ -47,7 +47,6 @@ namespace Wykop.ApiProvider.Data.PMMessage.PM
 
             AddMethodParameterToRequest(new MethodParameter()
             {
-                MethodName = "param1",
                 Value = RequestedUsername
             });
 

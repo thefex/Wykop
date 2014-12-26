@@ -16,7 +16,7 @@ namespace Wykop.ApiProvider.Data.Link.Top
         {
             base.BuildParameters();
 
-            var yearParameter = new MethodParameter() { MethodName = "param1", Value = ForYearDate.Year.ToString() };
+            var yearParameter = new MethodParameter() { Value = ForYearDate.Year.ToString() };
             AddMethodParameterToRequest(yearParameter);
         }
     }

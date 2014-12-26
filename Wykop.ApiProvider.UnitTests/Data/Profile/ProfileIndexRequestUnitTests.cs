@@ -15,7 +15,7 @@ namespace Wykop.ApiProvider.UnitTests.Data.Profile
             systemUnderTest = new ProfileIndexLinksRequest("testUsername");
 
             WykopRequest = systemUnderTest;
-            string expectedUriString = UnitTestsConstants.WykopHostUrl + "Profile/Index/param1/" + 
+            string expectedUriString = UnitTestsConstants.WykopHostUrl + "Profile/Index/" + 
                                        systemUnderTest.ProfileUsername + "/" +
                                       "appkey," + UnitTestsConstants.AppKey;
             ExpectedRequestUri = new Uri(expectedUriString);
