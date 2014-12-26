@@ -113,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\RestRequestAsserts.cs" />
+    <Compile Include="DataCreators\SendMessageWykopRequestUnitTests.cs" />
     <Compile Include="Data\ConversationList\PM\ConversationListRequestUnitTests.cs" />
     <Compile Include="Data\Conversation\ConversationRequestUnitTests.cs" />
     <Compile Include="Data\Entry\Entries\EntriesAddRequestUnitTests.cs" />
