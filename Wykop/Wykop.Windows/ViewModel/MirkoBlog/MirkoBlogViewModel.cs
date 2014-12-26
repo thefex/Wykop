@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Wykop.ApiProvider.Data.Entry;
 using Wykop.ApiProvider.Data.Entry.Stream;
-using Wykop.ApiProvider.DataProviders;
+using Wykop.ApiProvider.DataProviders.Interfaces;
 using Wykop.ApiProvider.Model;
 using Wykop.Common;
 using Wykop.View;
