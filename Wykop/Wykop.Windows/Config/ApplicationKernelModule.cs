@@ -22,6 +22,7 @@ namespace Wykop.Config
             NavigationService navigationService = new NavigationService();
             navigationService.Configure(NavigationPageKeys.DashboardPageKey, typeof(Dashboard));
             navigationService.Configure(NavigationPageKeys.MikroblogPageKey, typeof(MikroBlog));
+            navigationService.Configure(NavigationPageKeys.ConversationPageKey, typeof(ConversationPage));
 
             Bind<INavigationService>().ToConstant(navigationService);
         }

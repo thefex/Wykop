@@ -33,5 +33,10 @@ namespace Wykop.ViewModel
         {
             get { return _ninjectKernel.Get<MirkoEntryAddViewModel>(); }
         }
+
+        public ConversationViewModel ConversationViewModel
+        {
+            get { return _ninjectKernel.Get<ConversationViewModel>(); }
+        }
     }
 }

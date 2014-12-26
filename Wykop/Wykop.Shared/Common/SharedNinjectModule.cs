@@ -4,6 +4,7 @@ using Wykop.ApiProvider.Data;
 using Wykop.ApiProvider.Data.Entry;
 using Wykop.ApiProvider.DataCreators;
 using Wykop.ApiProvider.DataProviders;
+using Wykop.ApiProvider.DataProviders.Interfaces;
 using Wykop.ApiProvider.Links;
 using Wykop.ApiProvider.Login;
 using Wykop.ApiProvider.Model;
@@ -33,6 +34,9 @@ namespace Wykop.Common
 
             Bind<IWykopDataProvider>()
                 .To<DefaultWykopDataProvider>();
+
+            Bind<IUserWykopDataProvider>()
+                .To<LoggedUserWykopDataProvider>();
 
             Bind<IEntriesCreator>().To<LoggedUserEntriesCreator>();
 
