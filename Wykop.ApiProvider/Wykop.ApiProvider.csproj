@@ -62,7 +62,10 @@
     <Compile Include="Common\WykopApiConfiguration.cs" />
     <Compile Include="Common\Constants\DataConstants.cs" />
     <Compile Include="DataCreators\IEntriesCreator.cs" />
+    <Compile Include="DataCreators\IPrivateMessageSender.cs" />
     <Compile Include="DataCreators\LoggedUserEntriesCreator.cs" />
+    <Compile Include="DataCreators\PrivateMessageSender.cs" />
+    <Compile Include="DataCreators\Requests\PM\SendMessageWykopRequest.cs" />
     <Compile Include="DataProviders\DefaultWykopDataCollectionProvider.cs" />
     <Compile Include="DataProviders\DefaultWykopDataProvider.cs" />
     <Compile Include="DataProviders\Interfaces\IUserWykopDataProvider.cs" />
@@ -144,6 +147,8 @@
     <Compile Include="Model\Operations\AddEntryContent.cs" />
     <Compile Include="Model\Operations\CommentContent.cs" />
     <Compile Include="Model\Operations\EntryAddResult.cs" />
+    <Compile Include="Model\Operations\PrivateMessageContent.cs" />
+    <Compile Include="Model\Operations\PrivateMessageSendResult.cs" />
     <Compile Include="Model\Profile.cs" />
     <Compile Include="Model\SerializableModel.cs" />
     <Compile Include="Model\Tag.cs" />
