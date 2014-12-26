@@ -26,8 +26,11 @@ namespace Wykop.ApiProvider.DataCreators
             var loggedUser = await _loginService.GetLoggedUser();
 
             // todo: error handling
-            var sendMessageRestRequest = new SendMessageWykopRequest(messageContent).BuildRestRequest();
-            dynamic results = await _restClient.Execute<object>(sendMessageRestRequest, cancellationToken);
+            var sendMessageWykopRequest = new SendMessageWykopRequest(messageContent);
+            sendMessageWykopRequest.AuthorizeRequest(loggedUser.UserKey);
+
+            RestRequest restSendMessageRequest = sendMessageWykopRequest.BuildRestRequest();
+            dynamic results = await _restClient.Execute<object>(restSendMessageRequest, cancellationToken);
 
             if (results == "true")
                 return PrivateMessageSendResult.Sended;
