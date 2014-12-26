@@ -29,10 +29,10 @@
         </ListView>
         
         <Grid Grid.Row="2">
-            <TextBox Height="200" VerticalAlignment="Top"/>
+            <TextBox Height="200" VerticalAlignment="Top" Text="{Binding NewMessageBody, Mode=TwoWay}"/>
             <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="25"
-                    FontSize="30">
-                Odpisz
+                    FontSize="30" Command="{Binding SendPrivateMessageCommand}">
+                Wyślij nowa wiadomosc
             </Button>
         </Grid>
     </Grid>

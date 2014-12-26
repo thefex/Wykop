@@ -39,6 +39,7 @@ namespace Wykop.Common
                 .To<LoggedUserWykopDataProvider>();
 
             Bind<IEntriesCreator>().To<LoggedUserEntriesCreator>();
+            Bind<IPrivateMessageSender>().To<PrivateMessageSender>();
 
             Bind<ViewServices>().ToSelf();
         }
