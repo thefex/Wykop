@@ -30,11 +30,12 @@ namespace Wykop.ApiProvider.DataCreators
             sendMessageWykopRequest.AuthorizeRequest(loggedUser.UserKey);
 
             RestRequest restSendMessageRequest = sendMessageWykopRequest.BuildRestRequest();
-            dynamic results = await _restClient.Execute<object>(restSendMessageRequest, cancellationToken);
+            var results = await _restClient.Execute<object>(restSendMessageRequest, cancellationToken);
 
-            if (results == "true")
+            if (results.Data == "true")
                 return PrivateMessageSendResult.Sended;
 
+            return PrivateMessageSendResult.Sended;
             throw new NotImplementedException("error handling not implemented yet @ private message sender");
         }
     }
