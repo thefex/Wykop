@@ -75,11 +75,18 @@
                     <view:UpcomingDashboardUserControl DataContext="{Binding Wykopalisko}"/>
                 </DataTemplate>
             </HubSection>
+
+            <HubSection Header="TAGI" MinWidth="300" 
+                        Visibility="{Binding IsUserLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <DataTemplate>
+                    <view:DashboardObservedTags DataContext="{Binding ObservedTags}"/>
+                </DataTemplate>
+            </HubSection>
             
             <HubSection Header="MOJE KONWERSACJE" MinWidth="300" Name="HubSectionConversations"
-                        DataContext="{Binding Conversations}">
+                        Visibility="{Binding IsUserLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <DataTemplate>
-                    <view:DashboardMyConversationsUserControl/>
+                    <view:DashboardMyConversationsUserControl DataContext="{Binding Conversations}"/>
                 </DataTemplate>
             </HubSection>
         </Hub>

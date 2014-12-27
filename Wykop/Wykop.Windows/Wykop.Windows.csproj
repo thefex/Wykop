@@ -108,6 +108,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Common\Behaviors\LoadDataOnPageLoadedBehavior.cs" />
+    <Compile Include="Common\MessengerTokens.cs" />
     <Compile Include="Common\NavigationPageKeys.cs" />
     <Compile Include="Config\ApplicationKernelModule.cs" />
     <Compile Include="ConversationPage.xaml.cs">
@@ -128,6 +129,7 @@
     <Compile Include="ViewModel\Dashboard\HomeDashboardViewModel.cs" />
     <Compile Include="ViewModel\Dashboard\HotDashboardViewModel.cs" />
     <Compile Include="ViewModel\Dashboard\MyConversationsViewModel.cs" />
+    <Compile Include="ViewModel\Dashboard\UserObservedTagsViewModel.cs" />
     <Compile Include="ViewModel\Dashboard\UserProfileViewModel.cs" />
     <Compile Include="ViewModel\Dashboard\WykopaliskoDashboardViewModel.cs" />
     <Compile Include="ViewModel\LoginPageViewModel.cs" />
@@ -147,6 +149,9 @@
     </Compile>
     <Compile Include="View\DashboardMyConversationsUserControl.xaml.cs">
       <DependentUpon>DashboardMyConversationsUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DashboardObservedTags.xaml.cs">
+      <DependentUpon>DashboardObservedTags.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoggedUserHeaderControl.xaml.cs">
       <DependentUpon>LoggedUserHeaderControl.xaml</DependentUpon>
@@ -211,6 +216,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\DashboardMyConversationsUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DashboardObservedTags.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
