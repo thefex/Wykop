@@ -10,7 +10,8 @@
     d:DesignWidth="400">
     
     <Grid>
-        <ListView ItemsSource="{Binding ObservedTags}">
+        <ListView ItemsSource="{Binding ObservedTags}" SelectionMode="None" ScrollViewer.HorizontalScrollMode="Disabled"
+                  ScrollViewer.VerticalScrollMode="Disabled">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding}" Style="{StaticResource SubheaderTextBlockStyle}"/>
