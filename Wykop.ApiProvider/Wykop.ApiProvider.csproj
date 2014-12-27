@@ -114,8 +114,10 @@
     <Compile Include="Data\Link\Profile\ProfileIndexLinksRequest.cs" />
     <Compile Include="Data\Link\Profile\ProfileLinksRequest.cs" />
     <Compile Include="Data\PMMessage\PM\ConversationsRequest.cs" />
+    <Compile Include="Data\Tags\TagWykopRequest.cs" />
     <Compile Include="Data\Types\NotificationType.cs" />
     <Compile Include="Data\Types\SortType.cs" />
+    <Compile Include="Data\Tags\User\UserTagsRequest.cs" />
     <Compile Include="Data\WykopRequestBase.cs" />
     <Compile Include="Exceptions\ApiExceptions\ApiErrorCode.cs" />
     <Compile Include="Exceptions\ApiExceptions\Factories\InvalidApiKeyExceptionFactory.cs" />

@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Wykop.ApiProvider.Data.ConversationList.PM;
+using Wykop.ApiProvider.Data.Tags.User;
 using Wykop.ApiProvider.DataProviders;
 using Wykop.ApiProvider.Model.MessagesRelated;
 
@@ -23,6 +25,20 @@ namespace Wykop.ApiProvider.Model.Extensions
                 conversationListRequest, cancellationToken);
 
             return conversationLists;
+        }
+
+        public static async Task<IList<Tag>> GetObservedTags(this LoggedUser loggedUser, IWykopDataProvider dataProvider,
+            CancellationToken cancellationToken)
+        {
+            UserTagsRequest userTagsRequest = new UserTagsRequest();
+            userTagsRequest.AuthorizeRequest(loggedUser.UserKey);
+
+            var tagsStringList =
+                await dataProvider.GetData<UserTagsRequest, IList<string>>(userTagsRequest, cancellationToken);
+
+            return tagsStringList
+                .Select(x => new Tag(x.TrimStart('#')))
+                .ToList();
         }
     }
 }

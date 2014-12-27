@@ -132,6 +132,7 @@
     <Compile Include="Data\Profile\ProfileLinksRequestTestFixture.cs" />
     <Compile Include="Data\Profile\ProfilePublishedLinksRequestUnitTests.cs" />
     <Compile Include="Data\RestSharpSetupFixture.cs" />
+    <Compile Include="Data\Tags\User\UserTagsRequestUnitTests.cs" />
     <Compile Include="Data\UnitTestsConstants.cs" />
     <Compile Include="Data\WykopRequestBaseTestFixture.cs" />
     <Compile Include="Model\Extensions\ConversationListExtensionsUnitTests.cs" />
