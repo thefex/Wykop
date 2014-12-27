@@ -86,13 +86,13 @@
             <FadeOutThemeAnimation TargetName="LoginButtonsContainer" Duration="0:0:0.3"/>
 
             <DoubleAnimation To="-600" Storyboard.TargetName="MirkoLogoImage" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)"
-                             Duration="0:0:0.45" BeginTime="0:0:0.25">
+                             Duration="0:0:0.7" BeginTime="0:0:0.25">
                 <DoubleAnimation.EasingFunction>
                     <CircleEase EasingMode="EaseInOut"/>
                 </DoubleAnimation.EasingFunction>
             </DoubleAnimation>
             <DoubleAnimation To="-300" Storyboard.TargetName="MirkoLogoImage" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
-                             Duration="0:0:0.45"
+                             Duration="0:0:0.7"
                              BeginTime="0:0:0.25">
                 <DoubleAnimation.EasingFunction>
                     <CircleEase EasingMode="EaseInOut"/>
