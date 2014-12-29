@@ -62,6 +62,9 @@ namespace Wykop.ApiProvider.Model
 
         // todo add comments, voters, user_favorite,embed property
 
+        [JsonProperty("embed")]
+        public Embed EmbeddedMedia { get; internal set; }
+
         [JsonProperty("vote_count")]
         public uint VoteCount { get; internal set; }
     }
