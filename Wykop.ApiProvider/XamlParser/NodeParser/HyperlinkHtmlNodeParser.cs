@@ -9,12 +9,6 @@ namespace Wykop.ApiProvider.XamlParser.NodeParser
     [HtmlNodeParserType(typeof(HyperlinkHtmlNodeParser), NodeName = "a")]
     public class HyperlinkHtmlNodeParser : IHtmlNodeParser
     {
-        public IEnumerable<Block> GetBlocks(HtmlNode fromHtmlNode)
-        {
-           // fromHtmlNode.Attributes
-            return new List<Block>();
-        }
-
         public IEnumerable<Inline> GetInlineElements(HtmlNode fromHtmlNode)
         {
             var hyperLink = new Hyperlink();
