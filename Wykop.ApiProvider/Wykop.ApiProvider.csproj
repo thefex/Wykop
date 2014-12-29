@@ -137,6 +137,7 @@
     <Compile Include="Login\LoginResult.cs" />
     <Compile Include="Login\LoginService.cs" />
     <Compile Include="Login\UserApplicationKeyProvider.cs" />
+    <Compile Include="Model\Embed.cs" />
     <Compile Include="Model\Extensions\ConversationListExtensions.cs" />
     <Compile Include="Model\Extensions\LoggedUserExtensions.cs" />
     <Compile Include="Model\MessagesRelated\ConversationList.cs" />
@@ -158,6 +159,14 @@
     <Compile Include="Model\Avatar.cs" />
     <Compile Include="Model\UsersIdList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XamlParser\Attributes\HtmlNodeParserTypeAttribute.cs" />
+    <Compile Include="XamlParser\NodeParser\IHtmlNodeParser.cs" />
+    <Compile Include="XamlParser\IHtmlNodeParserProvider.cs" />
+    <Compile Include="XamlParser\DefaultHtmlNodeParserProvider.cs" />
+    <Compile Include="XamlParser\NodeParser\DefaultHtmlNodeParser.cs" />
+    <Compile Include="XamlParser\NodeParser\HyperlinkHtmlNodeParser.cs" />
+    <Compile Include="XamlParser\NodeParser\LineBreakHtmlNodeParser.cs" />
+    <Compile Include="XamlParser\XamlHtmlParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
